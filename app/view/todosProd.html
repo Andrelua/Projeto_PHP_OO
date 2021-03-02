@@ -1,0 +1,29 @@
+<section>
+    <h1>Produtos: </h1>
+        <article>
+            <header>
+                <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome produto</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Quantidade</th>
+                      </tr>
+                    </thead>
+                    {% for produto in produtos %}
+                      <tbody>
+                        <tr>
+                          <th scope="row">{{produto.imagem}}</th>
+                          <th scope="row">{{produto.nome}}</th>
+                          <th scope="row">{{produto.categoria}}</th>
+                          <th scope="row">{{produto.quantidade}}</th>
+                          <th scope="row"><a href="https://localhost/Projeto_PHP_OO/index.php?pagina=produto&metodo=single&id={{produto.id}}" class="btn btn-secondary">Editar</a></th>
+                          <th scope="row"><a href="#" class="btn btn-danger">Deletar</a></th>
+                        </tr>
+                      </tbody>
+                    {% endfor %}
+                  </table>
+            </header>
+        </article>
+</section>

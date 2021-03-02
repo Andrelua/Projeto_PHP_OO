@@ -1,0 +1,22 @@
+{% for single in singles %}
+    <form >
+        <div class="form-group col-md-6">
+            <label for="inputName2">Nome do produto</label>
+            <input type="text" class="form-control" id="inputName2" placeholder="{{single.nome}}">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputName3">Categoria do produto</label>
+            <input type="text" class="form-control" id="inputName3" placeholder="{{single.categoria}}">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlFile1">Imagem do produto</label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputQtd">Quantidade</label>
+            <input type="number" class="form-control" id="inputQtd" min="1" placeholder="{{single.quantidade}}">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-success">Editar</button>
+    </form>
+{% endfor %}

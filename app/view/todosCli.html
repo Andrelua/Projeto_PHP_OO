@@ -1,9 +1,12 @@
 <section>
     <h1>Clientes: </h1>
-        <article>
-            <header>
-                <h2><a href="#">Nome cliente</a></h2>
-            </header>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, itaque inventore quis sunt quam amet quaerat nobis architecto molestiae tenetur illo voluptate numquam harum, cupiditate maxime quas sed unde quasi.</p>
-        </article>
+    <br>
+        {% for cliente in clientes %}
+            <article>
+                <header>
+                    <h3><a href="https://localhost/Projeto_PHP_OO/index.php?pagina=cliente&metodo=single&id={{cliente.id_cliente}}" style="text-decoration:none; color: black;">{{ cliente.nome }}</a></h3>
+                </header>
+            </article>
+            <hr>
+        {% endfor %}
 </section>

@@ -13,13 +13,14 @@
         .container {
             background-color: #563d7c;
             color: black;
+            margin-top: 100px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2><img src="../../assets/img/logo.png" alt="logo"> Acesso ao dashboard</h2>
-        <form>
+    <div class="container"> 
+        <h2><img src="../../logo.png" alt=""> Acesso ao dashboard</h2>
+        <form method="POST">
             <div class="form-group">
                 <label for="credencial">Credencial</label>
                 <input type="text" class="form-control" id="credencial" aria-describedby="emailHelp" placeholder="Sua credencial aqui...">
@@ -28,6 +29,7 @@
                 <label for="exampleInputPassword1">Senha</label>
                 <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
             </div>
+            Caso o funcionário não esteja cadastrado, <a href="#">Cadastre-o</a>.
             <br>
             <button type="submit" class="btn btn-success">Enviar</button>
         </form>

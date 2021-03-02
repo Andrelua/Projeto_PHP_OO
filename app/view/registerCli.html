@@ -1,34 +1,34 @@
-<form>
+<form method="POST" action="https://localhost/Projeto_PHP_OO/index.php?pagina=cliente&metodo=cadastraCliente">
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputEmail4">Nome completo</label>
-      <input type="text" class="form-control" id="inputName" placeholder="Nome completo">
+      <label for="nome">Nome completo</label>
+      <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome completo">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="cpf">CPF</label>
+      <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF">
     </div>
     <div class="form-group col-md-6">
       <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">Senha</label>
-      <input type="password" class="form-control" id="inputPassword4" placeholder="Senha">
+      <input type="email" class="form-control" id="inputEmail4" name="email" placeholder="Email">
     </div>
   </div>
   <div class="form-group">
     <label for="inputAddress">Endereço</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="Rua dos Bobos">
+    <input type="text" class="form-control" id="inputAddress" name="endereco" placeholder="Rua dos Bobos">
   </div>
   <div class="form-group">
-    <label for="inputAddress2">Telefone (formato: xxxxx-xxxx):</label>
-    <input type="tel" class="form-control" id="inputTel" pattern="^\d{5}-\d{4}$">
+    <label for="inputAddress2">Telefone</label>
+    <input type="tel" class="form-control" id="inputTel" name="telefone" pattern="^\d{5}-\d{4}$" placeholder="xxxxx-xxxx">
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputCity">Cidade</label>
-      <input type="text" class="form-control" id="inputCity">
+      <input type="text" class="form-control" id="inputCity" name="cidade" placeholder="(Ex) Recife">
     </div>
     <div class="form-group col-md-4">
       <label for="inputEstado">Estado</label>
-      <select id="inputEstado" class="form-control">
+      <select id="inputEstado" name="estado" class="form-control">
         <option selected>Escolher...</option>
         <option>Pernambuco</option>
         <option>Paraíba</option>
@@ -42,8 +42,9 @@
     </div>
     <div class="form-group col-md-2">
       <label for="inputCEP">CEP</label>
-      <input type="text" class="form-control" id="inputCEP" placeholder="00000-000">
+      <input type="text" class="form-control" id="inputCEP" name="cep" pattern="^\d{5}-\d{3}$" placeholder="00000-000">
     </div>
   </div>
-  <button type="submit" class="btn btn-success">Entrar</button>
+  <br>
+  <button type="submit" class="btn btn-success">Cadastrar</button>
 </form>
