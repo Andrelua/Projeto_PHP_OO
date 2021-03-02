@@ -1,5 +1,7 @@
 <?php
 
+// Conexão com o banco de dados
+
 abstract class Connection {
     private static $conn;
 
