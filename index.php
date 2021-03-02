@@ -8,14 +8,11 @@ require_once "/opt/lampp/htdocs/Projeto_PHP_OO/app/controller/ClienteController.
 require_once "/opt/lampp/htdocs/Projeto_PHP_OO/app/controller/ErroController.php";
 require_once "/opt/lampp/htdocs/Projeto_PHP_OO/app/controller/LoginController.php";
 require_once "/opt/lampp/htdocs/Projeto_PHP_OO/app/controller/PedidoController.php";
-require_once "/opt/lampp/htdocs/Projeto_PHP_OO/app/controller/PesquisaController.php";
 require_once "/opt/lampp/htdocs/Projeto_PHP_OO/app/controller/ProdutoController.php";
-require_once "/opt/lampp/htdocs/Projeto_PHP_OO/app/controller/RegisterController.php";
 
 require_once "/opt/lampp/htdocs/Projeto_PHP_OO/app/model/Cliente.php";
 require_once "/opt/lampp/htdocs/Projeto_PHP_OO/app/model/Funcionario.php";
 require_once "/opt/lampp/htdocs/Projeto_PHP_OO/app/model/Pedidos.php";
-require_once "/opt/lampp/htdocs/Projeto_PHP_OO/app/model/Pesquisa.php";
 require_once "/opt/lampp/htdocs/Projeto_PHP_OO/app/model/Produto.php";
 
 require_once "/opt/lampp/htdocs/Projeto_PHP_OO/lib/database/Connection.php";

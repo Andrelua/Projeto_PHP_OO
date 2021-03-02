@@ -2,12 +2,16 @@
 
 class Core{
 
+    public $controller;
+    public $method;
+    public $id;
+
     public function start($request) {
 
         if (isset($request['pagina'])){
             $controller = ucfirst($request['pagina'].'Controller');
         } else {
-            $controller = 'HomeController';
+            $controller = 'LoginController';
         }
         
         if (isset($request['metodo'])) {

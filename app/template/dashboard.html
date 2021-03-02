@@ -11,6 +11,11 @@
         background-color: #7a60a0;
         margin: 0px;
         }
+        .container2 {
+            background-color: #7a60a0;
+            color: black;
+            margin-top: 100px;
+        }
         .container {
             background-color: #fff;
             color: black;
@@ -82,15 +87,15 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href="https://localhost/Projeto_PHP_OO/index.php?pagina=produto">Cadastrar produto</a>
                       <a class="dropdown-item" href="https://localhost/Projeto_PHP_OO/index.php?pagina=produto&metodo=listar">Listar produtos</a>
-                      <a class="dropdown-item" href="https://localhost/Projeto_PHP_OO/index.php?pagina=pedido">Pedidos realizados</a>
+                      <a class="dropdown-item" href="https://localhost/Projeto_PHP_OO/index.php?pagina=pedido&metodo=listar">Pedidos realizados</a>
                     </div>
                   </li>
                   <li class="nav-item active">
                     <a class="nav-link" href="#">Sair</a>
                   </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0" action="#">
-                  <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar pedidos..." aria-label="Pesquisar">
+                <form class="form-inline my-2 my-lg-0" action="https://localhost/Projeto_PHP_OO/index.php?pagina=pedido&metodo=pesquisa" method="POST">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar pedidos pelo seu número..." name="pesquisa" aria-label="Pesquisar" >
                   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
                 </form>
               </div>
