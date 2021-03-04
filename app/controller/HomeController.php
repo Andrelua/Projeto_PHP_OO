@@ -17,4 +17,8 @@ class HomeController {
 
         echo $template->render();
     }
+
+    public function logout() {
+        
+    }
 }
