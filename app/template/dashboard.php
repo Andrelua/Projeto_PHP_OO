@@ -62,6 +62,8 @@
     </style>
 </head>
 <body>
+    
+
     <div class="container">
       <header class="float">
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -91,7 +93,7 @@
                     </div>
                   </li>
                   <li class="nav-item active">
-                    <a class="nav-link" href="#">Sair</a>
+                    <a class="nav-link" href="https://localhost/Projeto_PHP_OO/index.php?pagina=home&metodo=logout">Sair</a>
                   </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0" action="https://localhost/Projeto_PHP_OO/index.php?pagina=pedido&metodo=pesquisa" method="POST">
@@ -102,6 +104,7 @@
           </nav>
       </header>
     </div>
+    
 
     <div class="dinamic">
       <div class="box"> 

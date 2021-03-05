@@ -1,12 +1,54 @@
 <?php
 
+session_start();
+
 class Funcionario {
     
-    private $id;
-    private $nome;
-    private $senha;
-    private $cpf;
-    private $credencial;
+    public $id;
+    public $nome;
+    public $senha;
+    public $cpf;
+    public $credencial;
+    public $tipo;
+
+    public static function cadastraFunc($dadosPost) {
+        
+        $conn = Connection::getConn();
+
+        $nome = $dadosPost['nome'];
+        $senha = $dadosPost['senha'];
+        $cpf = $dadosPost['cpf'];
+        $cred = $dadosPost['credencial'];
+        $tipo = $dadosPost['tipo'];
+        
+        $sql = "INSERT INTO funcionario (nome, senha, cpf, credencial, tipo) VALUES ('$nome', '$senha', '$cpf', '$cred', '$tipo')";
+        $sql = $conn->prepare($sql);
+        $sql->execute();
+
+    }
+
+    public static function checkLogin($dadosPost) {
+
+        $conn = Connection::getConn();
+
+        $cred = $dadosPost['credencial'];
+        $senha = $dadosPost['senha'];
+
+        $sql = "SELECT * FROM funcionario WHERE credencial = '$cred'";
+        $sql = $conn->prepare($sql);
+        $sql->execute();
+
+        if ($sql->rowCount()) {
+            $result = $sql->fetch();
+            
+            if ($result['senha'] == $senha) {
+                $_SESSION['logado'] = True;
+                $_SESSION['id_func'] = $result['id_func'];
+                $_SESSION['tipo'] = $result['tipo'];
+                return True;
+            }
+        }        
+    }
 
     public function setId($id) {
         $this->id = $id;
@@ -46,5 +88,13 @@ class Funcionario {
 
     public function getCredencial() {
         return $this->credencial;
+    }
+
+    public function setTipo($tipo) {
+        $this->tipo = $tipo;
+    }
+
+    public function getTipo() {
+        return $this->tipo;
     }
 }

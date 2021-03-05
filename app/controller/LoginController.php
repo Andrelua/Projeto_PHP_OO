@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 class LoginController {
 
@@ -13,10 +12,6 @@ class LoginController {
         $conteudo = $template->render($params);
         echo $conteudo;
     }
-    
-    public function check($login, $senha) {
-        
-    }
 
     public function register() {
 
@@ -28,5 +23,30 @@ class LoginController {
 
         $conteudo = $template->render($params);
         echo $conteudo;
+    }
+
+    
+    public function cadastraFunc() {
+        try {
+
+            Funcionario::cadastraFunc($_POST);
+            header('Location: https://localhost/Projeto_PHP_OO/index.php');
+            
+        } catch (Exeception $e) {
+            header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=login&metodo=register');
+        }
+
+    } 
+
+    public function checkLogin() {
+        
+        if (Funcionario::checkLogin($_POST)) {
+
+            header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=home');
+
+        } else {
+            header('Location: https://localhost/Projeto_PHP_OO/index.php');
+        }   
+        
     }
 }

@@ -35,7 +35,6 @@ class ClienteController {
         } catch (Exception $e) {
             echo $e->getMessage();
         }
-
     }
 
     public function cadastraCliente() {

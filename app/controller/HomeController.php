@@ -19,6 +19,9 @@ class HomeController {
     }
 
     public function logout() {
-        
+        session_start();
+        session_unset();
+        session_destroy();
+        header('Location: https://localhost/Projeto_PHP_OO/index.php');
     }
 }
