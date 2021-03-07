@@ -62,7 +62,6 @@
     </style>
 </head>
 <body>
-    
 
     <div class="container">
       <header class="float">
@@ -104,7 +103,6 @@
           </nav>
       </header>
     </div>
-    
 
     <div class="dinamic">
       <div class="box"> 

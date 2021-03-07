@@ -1,52 +1,56 @@
 <?php
 
 class PedidoController {
-
-    public function index() {
-        echo "Listar todos pedidos realizados";
-    }
-
-    public function criar() {
-        echo "Teste";
-    }
     
     public function listar() {
+        if ($_SESSION['logado']) {
 
-        try {
-            $pedidos = Pedidos::selecionarTodos();
-
-            $loader = new \Twig\Loader\FilesystemLoader('app/view');
-            $twig = new \Twig\Environment($loader);
-            $template = $twig->load('pedidosRealizados.html');
-
-            $params = array();
-            $params['pedidos'] = $pedidos;
-
-            $conteudo = $template->render($params);
-            echo $conteudo;
-
-        } catch (Exception $e) {
-            echo $e->getMessage();
+            try {
+                $pedidos = Pedidos::selecionarTodos();
+    
+                $loader = new \Twig\Loader\FilesystemLoader('app/view');
+                $twig = new \Twig\Environment($loader);
+                $template = $twig->load('pedidosRealizados.html');
+    
+                $params = array();
+                $params['pedidos'] = $pedidos;
+    
+                $conteudo = $template->render($params);
+                echo $conteudo;
+    
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+            
+        } else {
+            header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin ');
         }
+        
     }
 
     public function pesquisa() {
 
-        try {
-            $pesquisa = Pedidos::buscarByNumber($_POST);
+        if ($_SESSION['logado']) {
 
-            $loader = new \Twig\Loader\FilesystemLoader('app/view');
-            $twig = new \Twig\Environment($loader);
-            $template = $twig->load('pesquisa.html');
+            try {
+                $pesquisa = Pedidos::buscarByNumber($_POST);
 
-            $params = array();
-            $params['pedidos'] = $pesquisa;
+                $loader = new \Twig\Loader\FilesystemLoader('app/view');
+                $twig = new \Twig\Environment($loader);
+                $template = $twig->load('pesquisa.html');
 
-            $conteudo = $template->render($params);
-            echo $conteudo;
+                $params = array();
+                $params['pedidos'] = $pesquisa;
 
-        } catch (Exception $e) {
-            echo $e->getMessage();
+                $conteudo = $template->render($params);
+                echo $conteudo;
+
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+
+        } else {
+            header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin ');
         }
     }
 }

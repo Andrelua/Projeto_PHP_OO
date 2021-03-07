@@ -3,32 +3,52 @@
 class ProdutoController {
 
     public function index() {
-        $loader = new \Twig\Loader\FilesystemLoader('app/view');
-        $twig = new \Twig\Environment($loader);
-        $template = $twig->load('registerProduto.html');
 
-        echo $template->render();
+        if ($_SESSION['logado']) {
+
+            if ($_SESSION['tipo'] == 'Gerente') {
+
+                $loader = new \Twig\Loader\FilesystemLoader('app/view');
+                $twig = new \Twig\Environment($loader);
+                $template = $twig->load('registerProduto.html');
+
+                echo $template->render();
+
+            } else {
+                header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroValidacao');
+            }
+
+        } else {
+            header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin');
+        }
         
     }
     
     public function listar() {
 
-        try {
-            $todosProduto = Produto::selecionarTodos();
+        if ($_SESSION['logado']) {
 
-            $loader = new \Twig\Loader\FilesystemLoader('app/view');
-            $twig = new \Twig\Environment($loader);
-            $template = $twig->load('todosProd.html');
+            try {
+                $todosProduto = Produto::selecionarTodos();
 
-            $params = array();
-            $params['produtos'] = $todosProduto;
-    
-            $conteudo = $template->render($params);
-            echo $conteudo;
+                $loader = new \Twig\Loader\FilesystemLoader('app/view');
+                $twig = new \Twig\Environment($loader);
+                $template = $twig->load('todosProd.html');
 
-        } catch (Exception $e) {
-            echo $e->getMessage();
+                $params = array();
+                $params['produtos'] = $todosProduto;
+        
+                $conteudo = $template->render($params);
+                echo $conteudo;
+
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+
+        } else {
+            header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin ');
         }
+
     }
 
     public function register() {

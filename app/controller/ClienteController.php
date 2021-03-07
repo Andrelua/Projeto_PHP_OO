@@ -1,39 +1,54 @@
 <?php
+session_start();
+
 
 class ClienteController {
 
     public function index() {
 
-        try {
-            $colecCliente = Cliente::selecionaTodos();
+        if ($_SESSION['logado']) {
 
-            $loader = new \Twig\Loader\FilesystemLoader('app/view');
-            $twig = new \Twig\Environment($loader);
-            $template = $twig->load('todosCli.html');
-
-            $params = array();
-            $params['clientes'] = $colecCliente;
-
-            $conteudo = $template->render($params);
-            echo $conteudo;
+            try {
+                $colecCliente = Cliente::selecionaTodos();
     
-        } catch (Exception $e) {
-            echo $e->getMessage();
+                $loader = new \Twig\Loader\FilesystemLoader('app/view');
+                $twig = new \Twig\Environment($loader);
+                $template = $twig->load('todosCli.html');
+    
+                $params = array();
+                $params['clientes'] = $colecCliente;
+    
+                $conteudo = $template->render($params);
+                echo $conteudo;
+        
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+            
+        } else {
+            header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin');
         }
+
+        
     }
 
     public function register() {
+        if ($_SESSION['logado']) {
 
-        try {
+            try {
 
-            $loader = new \Twig\Loader\FilesystemLoader('app/view');
-            $twig = new \Twig\Environment($loader);
-            $template = $twig->load('registerCli.html');
-    
-            echo $template->render();
+                $loader = new \Twig\Loader\FilesystemLoader('app/view');
+                $twig = new \Twig\Environment($loader);
+                $template = $twig->load('registerCli.html');
+        
+                echo $template->render();
 
-        } catch (Exception $e) {
-            echo $e->getMessage();
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+
+        } else {
+            header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin');
         }
     }
 
@@ -46,22 +61,30 @@ class ClienteController {
     }
     
     public function single($params) {
-        try {
-            $singleCli = Cliente::buscarById($params);
+        if ($_SESSION['logado']) {
 
-            $loader = new \Twig\Loader\FilesystemLoader('app/view');
-            $twig = new \Twig\Environment($loader);
-            $template = $twig->load('singleCli.html');
+            try {
+                $singleCli = Cliente::buscarById($params);
 
-            $params = array();
-            $params['singles'] = $singleCli;
+                $loader = new \Twig\Loader\FilesystemLoader('app/view');
+                $twig = new \Twig\Environment($loader);
+                $template = $twig->load('singleCli.html');
 
-            $conteudo = $template->render($params);
-            echo $conteudo;
-    
-        } catch (Exception $e) {
-            echo $e->getMessage();
+                $params = array();
+                $params['singles'] = $singleCli;
+
+                $conteudo = $template->render($params);
+                echo $conteudo;
+        
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+            
+        } else {
+            header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin');
         }
     }
+
+    
 
 }
