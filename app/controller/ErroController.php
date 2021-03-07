@@ -22,5 +22,23 @@ class ErroController {
 
         echo $template->render();
     }
+
+    public function verificacao(){
+        
+        $loader = new \Twig\Loader\FilesystemLoader('app/view');
+        $twig = new \Twig\Environment($loader);
+        $template = $twig->load('verificacao.html');
+
+        echo $template->render();
+    }
+
+    public function erroGerente(){
+        
+        $loader = new \Twig\Loader\FilesystemLoader('app/view');
+        $twig = new \Twig\Environment($loader);
+        $template = $twig->load('erroGerente.html');
+
+        echo $template->render();
+    }
 }
 

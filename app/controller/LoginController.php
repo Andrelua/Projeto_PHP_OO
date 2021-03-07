@@ -38,15 +38,17 @@ class LoginController {
 
     } 
 
-    public function checkLogin() {
+    public function checkGerente() {
         
-        if (Funcionario::checkLogin($_POST)) {
+        if (Funcionario::checkGerente($_POST)) {
 
-            header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=home');
+            header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=login&metodo=register');
 
         } else {
-            header('Location: https://localhost/Projeto_PHP_OO/index.php');
+            header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroGerente');
         }   
         
     }
+
+
 }

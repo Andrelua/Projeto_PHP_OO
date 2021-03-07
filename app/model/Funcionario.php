@@ -50,6 +50,27 @@ class Funcionario {
         }        
     }
 
+    public static function checkGerente($dadosPost) {
+
+        $conn = Connection::getConn();
+
+        $cred = $dadosPost['credencial'];
+
+        $sql = "SELECT * FROM funcionario WHERE credencial = '$cred'";
+        $sql = $conn->prepare($sql);
+        $sql->execute();
+
+        if ($sql->rowCount()) {
+            $result = $sql->fetch();
+            
+            if ($result['tipo'] == 'Gerente') {
+                return True;
+            } else {
+                return False;
+            }
+        }        
+    }
+
     public function setId($id) {
         $this->id = $id;
     }
