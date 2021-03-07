@@ -38,6 +38,18 @@ class LoginController {
 
     } 
 
+    public function checkLogin() {
+        
+        if (Funcionario::checkLogin($_POST)) {
+
+            header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=home');
+
+        } else {
+            header('Location: https://localhost/Projeto_PHP_OO/index.php');
+        }   
+        
+    }
+    
     public function checkGerente() {
         
         if (Funcionario::checkGerente($_POST)) {
@@ -49,6 +61,4 @@ class LoginController {
         }   
         
     }
-
-
 }
