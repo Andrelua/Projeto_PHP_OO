@@ -7,11 +7,11 @@
             <h5 class="card-title">{{produto.nome}}</h5>
             <form action="#">
                 <input type="number" name="qtd" placeholder="{{produto.quantidade}}" min="0" max="{{produto.quantidade}}">
-                <a href="#" class="btn btn-primary">Adicionar</a>
+                <button type="button" class="btn btn-secondary">Adicionar</button>
             </form>
         </div>
     </div>
 {% endfor %}
 <div class="container2" style="padding: 10px; text-align: center;">
-    <a href="https://localhost/Projeto_PHP_OO/index.php?pagina=home&metodo=pedido" class="btn btn-secondary">Finalizar</a>
+    <a href="https://localhost/Projeto_PHP_OO/index.php?pagina=pedido&metodo=finalizarPdd" class="btn btn-secondary">Finalizar</a>
 </div>

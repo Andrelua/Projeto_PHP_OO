@@ -3,11 +3,11 @@
     <form method="POST" action="https://localhost/Projeto_PHP_OO/index.php?pagina=login&metodo=checkLogin">
         <div class="form-group">
             <label for="credencial">Credencial</label>
-            <input name="credencial" type="text" class="form-control" id="credencial" aria-describedby="emailHelp" placeholder="Sua credencial aqui...">
+            <input required name="credencial" type="text" class="form-control" id="credencial" aria-describedby="emailHelp" placeholder="Sua credencial aqui...">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Senha</label>
-            <input name="senha" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
+            <input required name="senha" type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha">
         </div>
         Caso o funcionário não esteja cadastrado, <a href="https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=verificacao" style="color: black;">Cadastre-o</a>.
         <br>
