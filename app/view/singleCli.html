@@ -1,33 +1,35 @@
 {% for single in singles %}
-  <form>
+  <form action="https://localhost/Projeto_PHP_OO/index.php?pagina=cliente&metodo=atualizarDados" method="POST"> 
+      <h5>Em caso de atualização de dados, o preenchimento de todos os campos é obrigatório.</h5>
+      <br>
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="nome">Nome completo</label>
-          <input type="text" class="form-control" id="nome" placeholder="{{single.nome}}">
+          <input name="nome" type="text" class="form-control" id="nome" placeholder="{{single.nome}}">
         </div>
         <div class="form-group col-md-6">
           <label for="cpf">CPF</label>
-          <input type="text" class="form-control" id="cpf" placeholder="{{single.cpf}}">
+          <input name="cpf" type="text" class="form-control" id="cpf" placeholder="{{single.cpf}}">
         </div>
         <div class="form-group col-md-6">
           <label for="inputEmail4">Email</label>
-          <input type="email" class="form-control" id="inputEmail4" placeholder="{{single.email}}">
+          <input name="email" type="email" class="form-control" id="inputEmail4" placeholder="{{single.email}}">
         </div>
       </div>
       <div class="form-group">
         <label for="inputAddress">Endereço</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="{{single.endereço}}">
+        <input name="endereco" type="text" class="form-control" id="inputAddress" placeholder="{{single.endereço}}">
       </div>
       <div class="form-group">
         <label for="inputAddress2">Telefone</label>
-        <input type="tel" class="form-control" id="inputTel" pattern="^\d{5}-\d{4}$" placeholder="{{single.telefone}}">
+        <input name="telefone" type="tel" class="form-control" id="inputTel" pattern="^\d{5}-\d{4}$" placeholder="{{single.telefone}}">
       </div>
       <div class="form-group col-md-2">
       <label for="inputCEP">CEP</label>
-      <input type="text" class="form-control" id="inputCEP" placeholder="{{single.cep}}">
+      <input name="cep" type="text" class="form-control" id="inputCEP" placeholder="{{single.cep}}">
       </div>
       <br>
-      <button type="submit" class="btn btn-success">Entrar</button>
+      <button type="submit" class="btn btn-success">Atualizar</button>
       <br>
   </form>
 {% endfor %}

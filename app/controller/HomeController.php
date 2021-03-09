@@ -36,9 +36,34 @@ class HomeController {
         } else {
             header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin ');
         }
-
-        
     }
+
+    public function listarProdutos() {
+
+        if ($_SESSION['logado']) {
+            try {
+                $todosProduto = Produto::selecionarTodos();
+
+                $loader = new \Twig\Loader\FilesystemLoader('app/view');
+                $twig = new \Twig\Environment($loader);
+                $template = $twig->load('selecaoPdt.html');
+
+                $params = array();
+                $params['produtos'] = $todosProduto;
+
+                $conteudo = $template->render($params);
+                echo $conteudo;
+
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+
+        } else {
+            header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin ');
+        }
+    }
+
+    
 
     public function logout() {
 

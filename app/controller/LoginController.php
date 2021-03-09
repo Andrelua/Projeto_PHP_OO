@@ -28,7 +28,7 @@ class LoginController {
     
     public function cadastraFunc() {
         try {
-
+            
             Funcionario::cadastraFunc($_POST);
             header('Location: https://localhost/Projeto_PHP_OO/index.php');
             

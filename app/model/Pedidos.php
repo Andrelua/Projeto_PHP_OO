@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 class Pedidos {
 
     public $id;
@@ -50,6 +52,21 @@ class Pedidos {
         }
 
         return $resultado;
+    }
+
+    public static function createPdd($id_cli, $dadosPost) {
+
+        $conn = Connection::getConn();
+
+        $numero = $dadosPost['numero'];
+        $forma = $dadosPost['forma'];
+        $id_func = $_SESSION['id_func'];
+        
+        
+        $sql = "INSERT INTO pedido (numero_pdd, forma_pag, id_func, id_cliente) VALUES ('$numero', '$forma', '$id_func', '$id_cli')";
+        $sql = $conn->prepare($sql);
+        $sql->execute();
+        
     }
 
     public function setId($id) {

@@ -53,4 +53,19 @@ class PedidoController {
             header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin ');
         }
     }
+
+    public function criarPedido() {
+
+        if ($_SESSION['logado']) {
+
+            $id_cliente = Cliente::retornaIdCpf($_POST['cpf']);
+
+            $criacao = Pedidos::createPdd($id_cliente, $_POST);
+
+            header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=home&metodo=listarProdutos');
+
+        } else {
+            header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin ');
+        }
+    }
 }

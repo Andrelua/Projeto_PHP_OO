@@ -72,6 +72,43 @@ class Cliente {
         return $resultado;
     }
 
+    /* Área de teste
+    public static function atualizarDados($dadosPost) {
+        
+        $nome = $dadosPost['nome'];
+        $cpf = $dadosPost['cpf'];
+        $email = $dadosPost['email'];
+        $endereco = $dadosPost['endereco'];
+        $telefone = $dadosPost['telefone'];
+        $cidade = $dadosPost['cidade'];
+        $estado = $dadosPost['estado'];
+        $cep = $dadosPost['cep']; 
+        
+        $conn = Connection::getConn();
+        
+        $sql = "UPDATE cliente SET nome = '$nome', cpf = '$cpf', email = '$email', endereço = '$endereco', telefone = '$telefone', cidade = '$cidade', estado = '$estado', cep = '$cep' WHERE cpf = '$cpf'";
+        $sql = $conn->prepare($sql);
+        $sql->execute();
+
+    } */
+
+    public static function retornaIdCpf($cpf) {
+
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM cliente WHERE cpf = :cpf";
+        $sql = $conn->prepare($sql);
+        $sql->bindValue(':cpf', $cpf);
+        $sql->execute();
+
+        if ($sql->rowCount()) {
+            $result = $sql->fetch();
+            return $result['id_cliente'];
+        }  
+        
+    }
+
+
     public function setId($id) {
         $this->id = $id;
     }

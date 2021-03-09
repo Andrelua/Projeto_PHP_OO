@@ -1,43 +1,29 @@
-<form method="POST" action="https://localhost/Projeto_PHP_OO/index.php?pagina=pedido&metodo=listaProdutos">
+<form method="POST" action="https://localhost/Projeto_PHP_OO/index.php?pagina=pedido&metodo=criarPedido">
     <div class="form-group">
         <label for="pedido">Número do pedido</label>
-        <input name="numero" type="text" class="form-control" id="pedido" aria-describedby="emailHelp" placeholder="Escreva o número aqui, esse núemro será utilizado depois para pesquisa...">
+        <input name="numero" type="text" class="form-control" id="pedido" aria-describedby="emailHelp" placeholder="Escreva o número aqui, esse número será utilizado depois para pesquisa...">
     </div>
     <div class="form-group col-md-4">
-      <label for="inputEstado">Nome do cliente</label>
-      <select id="inputEstado" name="tipo" class="form-control">
+      <label for="inputEstado">CPF do cliente</label>
+      <select id="inputEstado" name="cpf" class="form-control">
       <option selected>Escolher...</option>
       {% for cliente in clientes %}
-          <option>{{cliente.nome}}</option>
+          <option>{{cliente.cpf}}</option>
       {% endfor %}
       </select>
     </div>
-    <br>
     <fieldset class="form-group">
-      <div class="row">
-        <legend class="col-form-label col-sm-2 pt-0">Forma de pagamento</legend>
-        <div class="col-sm-10">
-             <div class="form-check">
-                <input class="form-check-input" type="radio" name="credito" id="credito" value="Crédito">
-                <label class="form-check-label" for="credito">
-                  Crédito
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="debito" id="debito" value="Débito">
-                <label class="form-check-label" for="debito">
-                  Débito
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="dinheiro" id="dinheiro" value="Dinheiro">
-                <label class="form-check-label" for="dinheiro">
-                  Dinheiro
-                </label>
-            </div>
-        </div>
+      <div class="form-group col-md-4">
+          <label for="inputEstado">Forma de pagamento</label>
+          <select id="inputEstado" name="forma" class="form-control">
+          <option selected>Escolher...</option>
+              <option>Débito</option>
+              <option>Crédito</option>
+              <option>Dinheiro</option>
+          </select>
       </div>
     </fieldset>
+    <br>
     <div class="form-group row">
       <div class="col-sm-10">
         <button type="submit" class="btn btn-primary">Iniciar</button>
