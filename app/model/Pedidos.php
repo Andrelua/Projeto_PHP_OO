@@ -65,8 +65,13 @@ class Pedidos {
         
         $sql = "INSERT INTO pedido (numero_pdd, forma_pag, id_func, id_cliente) VALUES ('$numero', '$forma', '$id_func', '$id_cli')";
         $sql = $conn->prepare($sql);
-        $sql->execute();
+        $start = $sql->execute();
         
+        if ($start) {
+            
+            $_SESSION['pedido'] = True;
+    
+        } 
     }
 
     public function setId($id) {

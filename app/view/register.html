@@ -8,15 +8,15 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Senha</label>
-                <input required type="password" class="form-control" id="exampleInputPassword1" name="senha" placeholder="Senha">
+                <input required type="password" class="form-control" id="exampleInputPassword1" minlength="6" maxlength="16" name="senha" placeholder="Senha">
             </div>
             <div class="form-group">
-                <label for="credencial">Credencial</label>
-                <input required type="text" class="form-control" id="credencial" name="credencial" aria-describedby="emailHelp" placeholder="Sua credencial...">
+                <label for="credencial">Credencial - xxx-xxx</label>
+                <input required type="text" class="form-control" id="credencial" name="credencial" pattern="^\d{3}-\d{3}$" aria-describedby="emailHelp" placeholder="Sua credencial...">
             </div>
             <div class="form-group">
-                <label for="cpf">CPF</label>
-                <input required type="text" class="form-control" id="cpf" name="cpf" aria-describedby="emailHelp" placeholder="Seu CPF...">
+                <label for="cpf">CPF - xxx.xxx.xxx-xx</label>
+                <input required type="text" class="form-control" id="cpf" name="cpf" aria-describedby="emailHelp" pattern="^\d{3}.\d{3}.\d{3}-\d{2}$"  placeholder="Seu CPF...">
             </div>
             <div class="form-group col-md-4">
                 <label for="inputEstado">Tipo de funcionário</label>

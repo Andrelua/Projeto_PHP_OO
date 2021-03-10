@@ -21,17 +21,23 @@ class HomeController {
 
         if ($_SESSION['logado']) {
 
-            $colecCliente = Cliente::selecionaTodos();
+            if (!$_SESSION['pedido']) {
+            
+                $colecCliente = Cliente::selecionaTodos();
 
-            $loader = new \Twig\Loader\FilesystemLoader('app/view');
-            $twig = new \Twig\Environment($loader);
-            $template = $twig->load('createPdd.html');
+                $loader = new \Twig\Loader\FilesystemLoader('app/view');
+                $twig = new \Twig\Environment($loader);
+                $template = $twig->load('createPdd.html');
 
-            $params = array();
-            $params['clientes'] = $colecCliente;
+                $params = array();
+                $params['clientes'] = $colecCliente;
 
-            $conteudo = $template->render($params);
-            echo $conteudo;
+                $conteudo = $template->render($params);
+                echo $conteudo;
+
+            } else {
+                header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=home&metodo=listarProdutos');
+            }
 
         } else {
             header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin ');
@@ -62,8 +68,6 @@ class HomeController {
             header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin ');
         }
     }
-
-    
 
     public function logout() {
 
