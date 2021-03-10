@@ -67,8 +67,8 @@ CREATE TABLE `funcionario` (
 --
 
 INSERT INTO `funcionario` (`id_func`, `nome`, `senha`, `cpf`, `credencial`, `tipo`) VALUES
-(1, 'André Luan', '123', '12374322900', '654789', 'Gerente'),
-(2, 'André Luan FIrmino de Santana', '1234', '12343567800', '789654', 'Operador de caixa');
+(1, 'André Luan', '123456', '12374322900', '654-789', 'Gerente'),
+(2, 'André Luan FIrmino de Santana', '123456', '12343567800', '789-654', 'Operador de caixa');
 
 -- --------------------------------------------------------
 
