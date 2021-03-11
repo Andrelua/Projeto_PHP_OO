@@ -48,7 +48,7 @@ class Pedidos {
         }
         
         if (!$resultado) {
-            throw new Exception("Não foi encontrado o pedido com esse número!");
+            throw new Exception("Não foi encontrado nenhum pedido com esse número!");
         }
 
         return $resultado;
