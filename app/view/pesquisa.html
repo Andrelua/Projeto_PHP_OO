@@ -1,16 +1,21 @@
-<table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Número pedido</th>
-        <th scope="col">Nome cliente</th>
-        <th scope="col">Total R$</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-      </tr>
-    </tbody>
-</table>
+<section>
+  <h1>Pedidos ralizados: </h1>
+      <article>
+          <header>
+              <table class="table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col"># Número do pedido</th>
+                    </tr>
+                  </thead>
+                  {% for pedido in pedidos %}
+                    <tbody>
+                      <tr>
+                        <th scope="row"><a href="https://localhost/Projeto_PHP_OO/index.php?pagina=pedido&metodo=single&id={{pedido.id}}" style="text-decoration:none; color: black;">{{pedido.numero_pdd}}</a></th>
+                      </tr>
+                    </tbody>
+                  {% endfor %}
+                </table>
+          </header>
+      </article>
+</section>

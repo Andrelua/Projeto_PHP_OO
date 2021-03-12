@@ -85,7 +85,7 @@ class ClienteController {
         }
     }
 
-    /* Área de teste
+    
     public function atualizarDados() {
         if ($_SESSION['logado']) {
 
@@ -96,6 +96,6 @@ class ClienteController {
         } else {
             header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin');
         }
-    } */
+    }
 
 }

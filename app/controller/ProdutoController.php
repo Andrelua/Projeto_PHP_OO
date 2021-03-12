@@ -59,6 +59,14 @@ class ProdutoController {
 
     }
 
+    public function update() {
+
+        Produto::update($_POST);
+
+        header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=produto&metodo=listar');
+
+    }
+
     public function single($params) {
         try {
             $singlePdt = Produto::buscarById($params);
@@ -78,5 +86,17 @@ class ProdutoController {
         }
     }
 
+    public function delete($params) {
+        
+        Produto::deleteById($params);
+        
+        header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=produto&metodo=listar');
+    }
     
+    public function deleteCar($params) {
+        
+        Produto::deletePdtCar($params);
+        
+        header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=pedido&metodo=carrinhoView');
+    }
 }

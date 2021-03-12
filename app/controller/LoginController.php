@@ -36,7 +36,7 @@ class LoginController {
             header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=login&metodo=register');
         }
 
-    } 
+    }
 
     public function checkLogin() {
         

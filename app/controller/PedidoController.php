@@ -68,4 +68,22 @@ class PedidoController {
             header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin ');
         }
     }
+
+    public function carrinhoView() {
+
+        $carrinho = Produto::produtosCarrinho();
+
+        $loader = new \Twig\Loader\FilesystemLoader('app/view');
+        $twig = new \Twig\Environment($loader);
+        $template = $twig->load('carrinho.html');
+
+        $params = array();
+        $params['produtos'] = $carrinho;
+
+        $conteudo = $template->render($params);
+        echo $conteudo;
+
+    }
+
+    
 }

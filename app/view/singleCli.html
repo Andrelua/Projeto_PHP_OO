@@ -2,6 +2,7 @@
   <form action="https://localhost/Projeto_PHP_OO/index.php?pagina=cliente&metodo=atualizarDados" method="POST"> 
       <h5>Em caso de atualização de dados, o preenchimento de todos os campos é obrigatório.</h5>
       <br>
+      <input type="hidden" name="id" id="id" value="{{single.id_cliente}}">
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="nome">Nome completo</label>

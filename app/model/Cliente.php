@@ -72,9 +72,10 @@ class Cliente {
         return $resultado;
     }
 
-    /* Área de teste
+    
     public static function atualizarDados($dadosPost) {
         
+        $id = $dadosPost['id'];
         $nome = $dadosPost['nome'];
         $cpf = $dadosPost['cpf'];
         $email = $dadosPost['email'];
@@ -86,11 +87,11 @@ class Cliente {
         
         $conn = Connection::getConn();
         
-        $sql = "UPDATE cliente SET nome = '$nome', cpf = '$cpf', email = '$email', endereço = '$endereco', telefone = '$telefone', cidade = '$cidade', estado = '$estado', cep = '$cep' WHERE cpf = '$cpf'";
+        $sql = "UPDATE cliente SET nome = '$nome', cpf = '$cpf', email = '$email', endereço = '$endereco', telefone = '$telefone', cidade = '$cidade', estado = '$estado', cep = '$cep' WHERE id_cliente = '$id'";
         $sql = $conn->prepare($sql);
         $sql->execute();
 
-    } */
+    } 
 
     public static function retornaIdCpf($cpf) {
 

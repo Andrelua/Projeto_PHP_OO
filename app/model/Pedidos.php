@@ -37,7 +37,7 @@ class Pedidos {
 
         $conn = Connection::getConn();
 
-        $sql = "SELECT * FROM pedido_rlz WHERE numero_pdd = '%$numero%'";
+        $sql = "SELECT * FROM pedido_rlz WHERE numero_pdd LIKE '%$numero%'";
         $sql = $conn->prepare($sql);
         $sql->execute();
 
