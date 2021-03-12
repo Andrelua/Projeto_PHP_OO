@@ -20,7 +20,7 @@ class Pedidos {
 
         $resultado = array();
 
-        while ($row = $sql->fetchObject('Produto')) {
+        while ($row = $sql->fetchObject('Pedidos')) {
             $resultado[] = $row;
         }
         
@@ -43,7 +43,7 @@ class Pedidos {
 
         $resultado = array();
 
-        while ($row = $sql->fetchObject('Cliente')) {
+        while ($row = $sql->fetchObject('Pedidos')) {
             $resultado[] = $row;
         }
         
@@ -70,8 +70,24 @@ class Pedidos {
         if ($start) {
             
             $_SESSION['pedido'] = True;
-    
-        } 
+            $_SESSION['id_pdd'] = selecionaIdPdd($numero, $forma, $id_func, $id_cli);
+            
+        }
+    }
+
+    public function selecionaIdPdd($num, $forma, $id_func, $id_clien) {
+
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM pedido WHERE numero_pdd = '$num' AND forma_pag = '$forma' AND id_func = '$id_func' AND id_cliente = '$id_clien'";
+        $sql = $conn->prepare($sql);
+        $sql->execute();
+
+        if ($sql->rowCount()) {
+            $result = $sql->fetch();
+            
+            return $result['id'];
+        }
     }
 
     public function setId($id) {

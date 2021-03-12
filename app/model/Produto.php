@@ -106,7 +106,9 @@ class Produto {
 
         $conn = Connection::getConn();
 
-        $sql = "SELECT * FROM carrinho WHERE id_pedido = ";
+        $id = $_SESSION['id_pdd'];
+
+        $sql = "SELECT * FROM carrinho WHERE id_pedido = '$id'";
         $sql = $conn->prepare($sql);
         $sql->execute();
 

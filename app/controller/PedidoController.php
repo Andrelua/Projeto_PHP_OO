@@ -71,18 +71,23 @@ class PedidoController {
 
     public function carrinhoView() {
 
-        $carrinho = Produto::produtosCarrinho();
+        try {
 
-        $loader = new \Twig\Loader\FilesystemLoader('app/view');
-        $twig = new \Twig\Environment($loader);
-        $template = $twig->load('carrinho.html');
+            $carrinho = Produto::produtosCarrinho();
 
-        $params = array();
-        $params['produtos'] = $carrinho;
+            $loader = new \Twig\Loader\FilesystemLoader('app/view');
+            $twig = new \Twig\Environment($loader);
+            $template = $twig->load('carrinho.html');
 
-        $conteudo = $template->render($params);
-        echo $conteudo;
+            $params = array();
+            $params['produtos'] = $carrinho;
 
+            $conteudo = $template->render($params);
+            echo $conteudo;
+            
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
 
     
