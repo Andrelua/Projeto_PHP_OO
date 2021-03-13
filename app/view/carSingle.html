@@ -1,0 +1,31 @@
+{% for single in singles %}
+    <form action="https://localhost/Projeto_PHP_OO/index.php?pagina=produto&metodo=updateCar" method="POST">
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                
+                <th scope="col">Nome produto</th>
+                <th scope="col">Preço</th>
+                <th scope="col">Quantidade</th>
+              </tr>
+            </thead>
+              <tbody>
+                <tr>
+                    <th scope="row"></th>
+                    <th scope="row">{{single.nome_produto}}</th>
+                    <th scope="row">{{single.preco_produto}}</th>
+                    <th scope="row">
+                        <div class="form-group col-md-6">
+                            <label for="inputQtd">Quantidade</label>
+                            <input name="quantidade" required type="number" class="form-control" id="inputQtd" min="1" placeholder="{{single.qtd_produto}}">
+                        </div>
+                    </th>
+                </tr>
+              </tbody>
+            </table>
+        <input type="hidden" name="id" id="id" value="{{single.id}}">
+        <input type="hidden" name="preco" id="preco" value="{{single.preco_produto}}">
+        <br>
+        <button type="submit" class="btn btn-success">Editar</button>
+    </form>
+{% endfor %}

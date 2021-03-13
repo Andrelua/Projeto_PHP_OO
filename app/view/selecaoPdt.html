@@ -4,8 +4,10 @@
 {% for produto in produtos %}
     <div class="card d-inline p-2" style="width: 18rem;">
         <div class="card-body">
-            <h5 class="card-title">{{produto.nome}}</h5>
-            <form action="#">
+            <h5 class="card-title">{{produto.nome}} - R$ {{produto.valor_und}}</h5>
+            <form method="POST" action="https://localhost/Projeto_PHP_OO/index.php?pagina=pedido&metodo=addCarrinho">
+                <input type="hidden" name="preco" id="preco" value="{{produto.valor_und}}">
+                <input type="hidden" name="name" id="name" value="{{produto.nome}}">
                 <input type="number" name="qtd" placeholder="{{produto.quantidade}}" min="0" max="{{produto.quantidade}}">
                 <button type="button" class="btn btn-secondary">Adicionar</button>
             </form>

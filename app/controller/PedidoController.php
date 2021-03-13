@@ -80,7 +80,7 @@ class PedidoController {
             $template = $twig->load('carrinho.html');
 
             $params = array();
-            $params['produtos'] = $carrinho;
+            $params['carrinho'] = $carrinho;
 
             $conteudo = $template->render($params);
             echo $conteudo;
@@ -90,5 +90,12 @@ class PedidoController {
         }
     }
 
+    public function addCarrinho() {
+        
+        $carrinho = Produto::addCarrinho($_POST);
+
+        header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=home&metodo=listarProdutos '); 
+
+    }
     
 }

@@ -1,5 +1,5 @@
 <section>
-    <h1>Produtos: </h1>
+    <h1>Produtos do carrinho: </h1>
         <article>
             <header>
                 <table class="table">
@@ -7,20 +7,18 @@
                       <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nome produto</th>
-                        <th scope="col">Categoria</th>
-                        <th scope="col">Quantidade</th>
                         <th scope="col">Preço</th>
+                        <th scope="col">Quantidade</th>
                       </tr>
                     </thead>
-                    {% for produto in produtos %}
+                    {% for car in carrinho %}
                       <tbody>
                         <tr>
-                          <th scope="row">{{produto.nome}}</th>
-                          <th scope="row">{{produto.categoria}}</th>
-                          <th scope="row">{{produto.quantidade}}</th>
-                          <th scope="row">{{produto.valor_und}}</th>
-                          <th scope="row"><a href="https://localhost/Projeto_PHP_OO/index.php?pagina=produto&metodo=single&id={{produto.id}}" class="btn btn-secondary">Editar</a></th>
-                          <th scope="row"><a href="https://localhost/Projeto_PHP_OO/index.php?pagina=produto&metodo=deleteCar&id={{produto.id}}" class="btn btn-danger">Deletar</a></th>
+                          <th scope="row">{{car.nome_produto}}</th>
+                          <th scope="row">{{car.preco_produto}}</th>
+                          <th scope="row">{{car.qtd_produto}}</th>
+                          <th scope="row"><a href="https://localhost/Projeto_PHP_OO/index.php?pagina=produto&metodo=singleCar&id={{car.id_carrinho}}" class="btn btn-secondary">Editar</a></th>
+                          <th scope="row"><a href="https://localhost/Projeto_PHP_OO/index.php?pagina=produto&metodo=deleteCar&id={{car.id_carrinho}}" class="btn btn-danger">Deletar</a></th>
                         </tr>
                       </tbody>
                     {% endfor %}

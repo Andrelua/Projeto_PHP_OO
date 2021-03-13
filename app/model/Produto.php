@@ -58,6 +58,22 @@ class Produto {
 
     }
 
+    public static function updateCar($dadosPost) {
+
+        $qtd = $dadosPost['quantidade'];
+        $preco = $dadosPost['preco'];
+        $id = $dadosPost['id'];
+
+        $vlr = $qtd * $preco;
+
+        $conn = Connection::getConn();
+
+        $sql = "UPDATE carrinho SET preco_produto = '$vlr', qtd_produto = '$qtd' WHERE id_carrinho = '$id'";
+        $sql = $conn->prepare($sql);
+        $sql->execute();
+
+    }
+
     public static function buscarById($id) {
 
         $conn = Connection::getConn();
@@ -75,6 +91,28 @@ class Produto {
         
         if (!$resultado) {
             throw new Exception("Não foi encontrado o produto!");
+        }
+
+        return $resultado;
+    }
+
+    public static function buscarById2($id) {
+
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM carrinho WHERE id = :id";
+        $sql = $conn->prepare($sql);
+        $sql->bindValue(':id', $id);
+        $sql->execute();
+
+        $resultado = array();
+
+        while ($row = $sql->fetchObject('Cliente')) {
+            $resultado[] = $row;
+        }
+        
+        if (!$resultado) {
+            throw new Exception("Não foi possivel editar o produto!");
         }
 
         return $resultado;
@@ -123,9 +161,30 @@ class Produto {
         }
         
         if (!$resultado) {
-            throw new Exception("Não não tem nenhum produto no carrinho!");
+            throw new Exception("Não tem nenhum produto no carrinho!");
         }
 
         return $resultado;
+    }
+
+    public static function addCarrinho($dadosPost) {
+        $nome = $dadosPost['name'];
+        $preco = $dadosPost['preco'];
+        $qtd = $dadosPost['qtd'];
+
+        $calc = $preco * $qtd;
+
+        $numero = $_SESSION['numero'];
+        $id_func = $_SESSION['id_func'];
+        $id_cli = $_SESSION['id_cli'];
+
+        $id = Pedidos::selecionaIdPdd($numero, $id_func, $id_cli);
+
+        $conn = Connection::getConn();
+
+        $sql = "INSERT INTO carrinho (nome_produto, preco_produto, qtd_produto, id_pedido) VALUES ('$nome', '$calc', '$qtd', '$id')";
+        $sql = $conn->prepare($sql);
+        $sql->execute();
+        
     }
 }

@@ -86,6 +86,33 @@ class ProdutoController {
         }
     }
 
+    public function singleCar($params) {
+        try {
+            $singlePdt = Produto::buscarById2($params);
+
+            $loader = new \Twig\Loader\FilesystemLoader('app/view');
+            $twig = new \Twig\Environment($loader);
+            $template = $twig->load('singlePro.html');
+
+            $params = array();
+            $params['singles'] = $singlePdt;
+
+            $conteudo = $template->render($params);
+            echo $conteudo;
+    
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function updateCar() {
+
+        Produto::updateCar($_POST);
+
+        header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=produto&metodo=listar');
+
+    }
+
     public function delete($params) {
         
         Produto::deleteById($params);
