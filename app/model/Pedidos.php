@@ -70,16 +70,17 @@ class Pedidos {
         if ($start) {
             
             $_SESSION['pedido'] = True;
-            $_SESSION['id_pdd'] = selecionaIdPdd($numero, $forma, $id_func, $id_cli);
+            $_SESSION['numero'] = $numero;
+            $_SESSION['id_cli'] = $id_cli;
             
         }
     }
 
-    public function selecionaIdPdd($num, $forma, $id_func, $id_clien) {
+    public static function selecionaIdPdd($num, $id_func, $id_clien) {
 
         $conn = Connection::getConn();
 
-        $sql = "SELECT * FROM pedido WHERE numero_pdd = '$num' AND forma_pag = '$forma' AND id_func = '$id_func' AND id_cliente = '$id_clien'";
+        $sql = "SELECT * FROM pedido WHERE numero_pdd = '$num' AND id_func = '$id_func' AND id_cliente = '$id_clien'";
         $sql = $conn->prepare($sql);
         $sql->execute();
 

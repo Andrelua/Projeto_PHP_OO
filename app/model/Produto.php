@@ -106,7 +106,11 @@ class Produto {
 
         $conn = Connection::getConn();
 
-        $id = $_SESSION['id_pdd'];
+        $numero = $_SESSION['numero'];
+        $id_func = $_SESSION['id_func'];
+        $id_cli = $_SESSION['id_cli'];
+
+        $id = Pedidos::selecionaIdPdd($numero, $id_func, $id_cli);
 
         $sql = "SELECT * FROM carrinho WHERE id_pedido = '$id'";
         $sql = $conn->prepare($sql);
