@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 11/03/2021 às 00:17
+-- Tempo de geração: 13/03/2021 às 23:30
 -- Versão do servidor: 10.4.17-MariaDB
 -- Versão do PHP: 8.0.1
 
@@ -20,6 +20,27 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `database`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `carrinho`
+--
+
+CREATE TABLE `carrinho` (
+  `id_carrinho` int(11) NOT NULL,
+  `nome_produto` varchar(200) NOT NULL,
+  `preco_produto` float NOT NULL,
+  `qtd_produto` int(11) NOT NULL,
+  `id_pedido` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Despejando dados para a tabela `carrinho`
+--
+
+INSERT INTO `carrinho` (`id_carrinho`, `nome_produto`, `preco_produto`, `qtd_produto`, `id_pedido`) VALUES
+(2, 'Banana', 20, 10, 16);
 
 -- --------------------------------------------------------
 
@@ -44,7 +65,7 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`id_cliente`, `nome`, `cpf`, `email`, `endereço`, `telefone`, `cidade`, `estado`, `cep`) VALUES
-(4, 'André Luan Firmino de Santana', '12312312312', 'andreluan123@gmail.com', 'Rua José Alfredo/Centro/REcife/123', '78976-4534', 'Recife', 'Pernambuco', '76543-212'),
+(4, 'André Luan FIrmino de Santana', '123.748.044-29', 'andreluan123@gmail.com', 'Rua José Alfredo/Centro/Recife/123', '78976-4534', '', '', '76543-212'),
 (5, 'Luiza', '12343567800', 'andreluan176@gmail.com', 'Ruablablabla', '99107-2916', 'Recife', 'Piauí', '76543-212');
 
 -- --------------------------------------------------------
@@ -90,7 +111,17 @@ CREATE TABLE `pedido` (
 
 INSERT INTO `pedido` (`id`, `numero_pdd`, `forma_pag`, `id_func`, `id_cliente`) VALUES
 (5, 4435, 'Débito', 1, 4),
-(6, 4435, 'Dinheiro', 1, 4);
+(6, 4435, 'Dinheiro', 1, 4),
+(7, 1234, 'Débito', 1, 4),
+(8, 78906, 'Débito', 1, 4),
+(9, 7890611, 'Débito', 1, 5),
+(10, 789060, 'Débito', 1, 4),
+(11, 4435, 'Débito', 1, 4),
+(12, 1234, 'Débito', 1, 4),
+(13, 176, 'Débito', 1, 4),
+(14, 1251745374, 'Crédito', 1, 4),
+(15, 8909, 'Débito', 1, 4),
+(16, 6098, 'Débito', 1, 4);
 
 -- --------------------------------------------------------
 
@@ -118,10 +149,18 @@ CREATE TABLE `produto` (
   `id` int(11) NOT NULL,
   `nome` varchar(200) NOT NULL,
   `categoria` varchar(200) NOT NULL,
-  `imagem` blob NOT NULL,
   `quantidade` int(11) NOT NULL,
   `valor_und` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Despejando dados para a tabela `produto`
+--
+
+INSERT INTO `produto` (`id`, `nome`, `categoria`, `quantidade`, `valor_und`) VALUES
+(6, 'Banana', 'Frutas e legumes', 20, 1.2),
+(7, 'Abacate', 'Frutas e legumes', 10, 2),
+(8, 'Schin cola', 'Bebidas', 20, 4);
 
 -- --------------------------------------------------------
 
@@ -141,6 +180,13 @@ CREATE TABLE `produto_cliente` (
 --
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices de tabela `carrinho`
+--
+ALTER TABLE `carrinho`
+  ADD PRIMARY KEY (`id_carrinho`),
+  ADD KEY `fk_carrinho_pedido` (`id_pedido`);
 
 --
 -- Índices de tabela `cliente`
@@ -187,6 +233,12 @@ ALTER TABLE `produto_cliente`
 --
 
 --
+-- AUTO_INCREMENT de tabela `carrinho`
+--
+ALTER TABLE `carrinho`
+  MODIFY `id_carrinho` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de tabela `cliente`
 --
 ALTER TABLE `cliente`
@@ -202,17 +254,23 @@ ALTER TABLE `funcionario`
 -- AUTO_INCREMENT de tabela `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de tabela `produto`
 --
 ALTER TABLE `produto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restrições para tabelas despejadas
 --
+
+--
+-- Restrições para tabelas `carrinho`
+--
+ALTER TABLE `carrinho`
+  ADD CONSTRAINT `fk_carrinho_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id`);
 
 --
 -- Restrições para tabelas `pedido`
