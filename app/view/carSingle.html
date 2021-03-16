@@ -11,19 +11,17 @@
             </thead>
               <tbody>
                 <tr>
-                    <th scope="row"></th>
                     <th scope="row">{{single.nome_produto}}</th>
-                    <th scope="row">{{single.preco_produto}}</th>
+                    <th scope="row">R$ {{single.preco_produto}}</th>
                     <th scope="row">
-                        <div class="form-group col-md-6">
-                            <label for="inputQtd">Quantidade</label>
-                            <input name="quantidade" required type="number" class="form-control" id="inputQtd" min="1" placeholder="{{single.qtd_produto}}">
-                        </div>
+                      <div class="form-group col-md-6">
+                          <input name="quantidade" required type="number" class="form-control" id="inputQtd" min="1" placeholder="{{single.qtd_produto}}">
+                      </div>
                     </th>
                 </tr>
               </tbody>
             </table>
-        <input type="hidden" name="id" id="id" value="{{single.id}}">
+        <input type="hidden" name="id" id="id" value="{{single.id_carrinho}}">
         <input type="hidden" name="preco" id="preco" value="{{single.preco_produto}}">
         <br>
         <button type="submit" class="btn btn-success">Editar</button>

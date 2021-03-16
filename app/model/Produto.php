@@ -101,7 +101,7 @@ class Produto {
 
         $conn = Connection::getConn();
 
-        $sql = "SELECT * FROM carrinho WHERE id = :id";
+        $sql = "SELECT * FROM carrinho WHERE id_carrinho = :id";
         $sql = $conn->prepare($sql);
         $sql->bindValue(':id', $id);
         $sql->execute();

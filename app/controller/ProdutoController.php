@@ -109,7 +109,7 @@ class ProdutoController {
 
         Produto::updateCar($_POST);
 
-        header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=produto&metodo=listar');
+        header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=pedido&metodo=carrinhoView');
 
     }
 
