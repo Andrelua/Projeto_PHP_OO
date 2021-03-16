@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 class Cliente {
 
@@ -108,7 +109,6 @@ class Cliente {
         }  
         
     }
-
 
     public function setId($id) {
         $this->id = $id;

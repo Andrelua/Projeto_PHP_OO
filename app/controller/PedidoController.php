@@ -91,11 +91,37 @@ class PedidoController {
     }
 
     public function addCarrinho() {
-        
-        $carrinho = Produto::addCarrinho($_POST);
 
-        header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=home&metodo=listarProdutos '); 
+        echo "Teste";
+        
+        /* $carrinho = Produto::addCarrinho($_POST);
+
+        header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=home&metodo=listarProdutos '); */
 
     }
     
+    public function single($params) {
+        if ($_SESSION['logado']) {
+
+            try {
+                $singleCli = Cliente::buscarById($params);
+
+                $loader = new \Twig\Loader\FilesystemLoader('app/view');
+                $twig = new \Twig\Environment($loader);
+                $template = $twig->load('singlePdd.html');
+
+                $params = array();
+                $params['singles'] = $singleCli;
+
+                $conteudo = $template->render($params);
+                echo $conteudo;
+        
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+            
+        } else {
+            header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin');
+        }
+    }
 }

@@ -2,17 +2,17 @@
     <a href="https://localhost/Projeto_PHP_OO/index.php?pagina=pedido&metodo=carrinhoView" class="btn btn-secondary">Produtos já adicionados ao carrinho.</a>
 </div>
 {% for produto in produtos %}
+<form action="https://localhost/Projeto_PHP_OO/index.php?pagina=pedido&metodo=addCarrinho" method="POST">
     <div class="card d-inline p-2" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title">{{produto.nome}} - R$ {{produto.valor_und}}</h5>
-            <form method="POST" action="https://localhost/Projeto_PHP_OO/index.php?pagina=pedido&metodo=addCarrinho">
-                <input type="hidden" name="preco" id="preco" value="{{produto.valor_und}}">
-                <input type="hidden" name="name" id="name" value="{{produto.nome}}">
-                <input type="number" name="qtd" placeholder="{{produto.quantidade}}" min="0" max="{{produto.quantidade}}">
-                <button type="button" class="btn btn-secondary">Adicionar</button>
-            </form>
+            <input type="hidden" name="preco" id="preco" value="{{produto.valor_und}}">
+            <input type="hidden" name="nome" id="name" value="{{produto.nome}}">
+            <input type="number" name="qtd" placeholder="{{produto.quantidade}}" min="0" max="{{produto.quantidade}}">
+            <button type="button" class="btn btn-secondary">Adicionar</button>
         </div>
     </div>
+</form>
 {% endfor %}
 <div class="container2" style="padding: 10px; text-align: center;">
     <a href="https://localhost/Projeto_PHP_OO/index.php?pagina=pedido&metodo=finalizarPdd" class="btn btn-secondary">Finalizar</a>

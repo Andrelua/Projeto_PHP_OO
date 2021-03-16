@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 class Produto {
 
@@ -168,7 +169,8 @@ class Produto {
     }
 
     public static function addCarrinho($dadosPost) {
-        $nome = $dadosPost['name'];
+
+        $nome = $dadosPost['nome'];
         $preco = $dadosPost['preco'];
         $qtd = $dadosPost['qtd'];
 
@@ -182,7 +184,7 @@ class Produto {
 
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO carrinho (nome_produto, preco_produto, qtd_produto, id_pedido) VALUES ('$nome', '$calc', '$qtd', '$id')";
+        $sql = "INSERT INTO carrinho (nome_produto, preco_produto, qtd_produto, id_pedido) VALUES ('$nome', '$calc', '$qtd', 17)";
         $sql = $conn->prepare($sql);
         $sql->execute();
         

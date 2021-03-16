@@ -3,7 +3,7 @@
         <article>
             <header>
                 {% for pedido in pedidos %}
-                    <h2><a href="https://localhost/Projeto_PHP_OO/index.php?pagina=pedido&metodo=single&id={{pedido.id}}" style="text-decoration:none; color: black;">{{pedido.numero_pdd}}</a></h2>
+                    <h2><a href="https://localhost/Projeto_PHP_OO/index.php?pagina=pedido&metodo=single&id={{pedido.id_pedido}}" style="text-decoration:none; color: black;">{{pedido.numero_pdd}}</a></h2>
                 {% endfor %}
             </header>
         </article>
