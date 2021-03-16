@@ -91,15 +91,18 @@ class PedidoController {
     }
 
     public function addCarrinho() {
-
-        echo "Teste";
         
-        /* $carrinho = Produto::addCarrinho($_POST);
+        if(Produto::addCarrinho($_POST)){
 
-        header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=home&metodo=listarProdutos '); */
+            header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=home&metodo=listarProdutos ');
 
+        } else {
+            header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=produto&metodo=listar');
+        }
+        
     }
-    
+
+    // Teste
     public function single($params) {
         if ($_SESSION['logado']) {
 

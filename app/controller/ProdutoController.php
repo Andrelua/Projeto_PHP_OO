@@ -92,7 +92,7 @@ class ProdutoController {
 
             $loader = new \Twig\Loader\FilesystemLoader('app/view');
             $twig = new \Twig\Environment($loader);
-            $template = $twig->load('singlePro.html');
+            $template = $twig->load('carSingle.html');
 
             $params = array();
             $params['singles'] = $singlePdt;

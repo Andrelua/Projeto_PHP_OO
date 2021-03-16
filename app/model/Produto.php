@@ -184,9 +184,12 @@ class Produto {
 
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO carrinho (nome_produto, preco_produto, qtd_produto, id_pedido) VALUES ('$nome', '$calc', '$qtd', 17)";
+        $sql = "INSERT INTO carrinho (nome_produto, preco_produto, qtd_produto, id_pedido) VALUES ('$nome', '$calc', '$qtd', '$id')";
         $sql = $conn->prepare($sql);
-        $sql->execute();
+        $start = $sql->execute();
         
+        if ($start) {
+            return True;
+        }
     }
 }
