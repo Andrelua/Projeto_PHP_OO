@@ -5,7 +5,7 @@
     <form action="https://localhost/Projeto_PHP_OO/index.php?pagina=pedido&metodo=addCarrinho" method="POST">
         <div class="card d-inline p-2" style="width: 18rem;">
             <div class="card-body">
-                <h5 class="card-title">{{produto.nome}} - R$ {{produto.valor_und}}</h5>
+                <h5 class="card-title">{{produto.nome}} - R$ {{produto.valor_und}} UND/KG</h5>
                 <input type="hidden" name="preco" id="preco" value="{{produto.valor_und}}">
                 <input type="hidden" name="nome" id="name" value="{{produto.nome}}">
                 <input type="number" name="qtd" placeholder="{{produto.quantidade}}" min="0" max="{{produto.quantidade}}">

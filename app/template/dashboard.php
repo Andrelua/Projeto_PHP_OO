@@ -67,7 +67,7 @@
     <div class="container">
       <header class="float">
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
-              <h2><a href="https://localhost/Projeto_PHP_OO/index.php?pagina=home&metodo=pedido" style="text-decoration: none; color: black;">Dashboard</a></h2>
+              <h2><a href="https://localhost/Projeto_PHP_OO/index.php?pagina=home&metodo=pedido" style="text-decoration: none; color: black;"> Dashboard</a></h2>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
                 <span class="navbar-toggler-icon"></span>
               </button>

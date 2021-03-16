@@ -192,4 +192,14 @@ class Produto {
             return True;
         }
     }
+
+    // Teste
+    public static function subQuantidade($qtd) {
+        
+        $conn = Connection::getConn();
+
+        $sql = "UPDATE produto SET quantidade = '$vlr' WHERE  = '$id'";
+        $sql = $conn->prepare($sql);
+        $sql->execute();
+    }
 }
