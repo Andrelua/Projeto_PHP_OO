@@ -110,6 +110,38 @@ class Cliente {
         
     }
 
+    public static function retornaIdNome($cpf) {
+
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM cliente WHERE cpf = :cpf";
+        $sql = $conn->prepare($sql);
+        $sql->bindValue(':cpf', $cpf);
+        $sql->execute();
+
+        if ($sql->rowCount()) {
+            $result = $sql->fetch();
+            return $result['id_cliente'];
+        }  
+        
+    }
+
+    public static function retornaNome($id) {
+
+        $conn = Connection::getConn();
+
+        $sql = "SELECT nome FROM cliente WHERE id_cliente = :id";
+        $sql = $conn->prepare($sql);
+        $sql->bindValue(':id', $id);
+        $sql->execute();
+
+        if ($sql->rowCount()) {
+            $result = $sql->fetch();
+            return $result['nome'];
+        }  
+        
+    }
+
     public function setId($id) {
         $this->id = $id;
     }

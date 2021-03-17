@@ -108,26 +108,35 @@ class PedidoController {
 
     public function finalizarPdd() {
 
-        Produto::addProdutosClientes();
+        Funcionario::finalizaPedido();
 
         Produto::apagaCarrinho();
+
+        Produto::apagaPedido();
 
         header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=cliente ');
     }
 
-    // Teste pedido single
+    
     public function single($params) {
         if ($_SESSION['logado']) {
 
             try {
-                $singleCli = Cliente::buscarById($params);
+                $singlePdd = Pedidos::buscaPddId($params);
+                
+                $idcli = Pedidos::buscaIdCli($params);
+                $idfunc = Pedidos::buscaIdFunc($params);
+                $nomeCli = Cliente::retornaNome($idcli);
+                $nomeFunc = Funcionario::retornaNome($idfunc);
 
                 $loader = new \Twig\Loader\FilesystemLoader('app/view');
                 $twig = new \Twig\Environment($loader);
                 $template = $twig->load('singlePdd.html');
 
                 $params = array();
-                $params['singles'] = $singleCli;
+                $params['pedido'] = $singlePdd;
+                $params['cliente'] = $nomeCli;
+                $params['funcionario'] = $nomeCli;
 
                 $conteudo = $template->render($params);
                 echo $conteudo;

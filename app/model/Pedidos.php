@@ -90,6 +90,85 @@ class Pedidos {
         }
     }
 
+    public static function selecionaIdPddRl($num, $id_func, $id_clien) {
+
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM pedido_rlz WHERE numero_pdd = '$num' AND id_func = '$id_func' AND id_cliente = '$id_clien'";
+        $sql = $conn->prepare($sql);
+        $sql->execute();
+
+        if ($sql->rowCount()) {
+            $result = $sql->fetch();
+            return $result['id'];
+        }
+    }
+
+    public static function formaPag($id) {
+
+        $conn = Connection::getConn();
+
+        $sql = "SELECT forma_pag FROM pedido WHERE id_pedido = '$id'";
+        $sql = $conn->prepare($sql);
+        $sql->execute();
+
+        if ($sql->rowCount()) {
+            $result = $sql->fetch();
+            return $result['forma_pag'];
+        }
+
+    }
+
+    public static function buscaPddId($id) {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT numero_pdd, forma_pag, data_fnz, valor_tot FROM pedido_rlz WHERE id_pedido = :id";
+        $sql = $conn->prepare($sql);
+        $sql->bindValue(':id', $id);
+        $sql->execute();
+
+        $resultado = array();
+
+        while ($row = $sql->fetchObject('Cliente')) {
+            $resultado[] = $row;
+        }
+        
+        if (!$resultado) {
+            throw new Exception("Não foi encontrado o pedido!");
+        }
+
+        return $resultado;
+    }
+
+    public static function buscaIdCli($id) {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT id_cliente FROM pedido_rlz WHERE id_pedido = :id";
+        $sql = $conn->prepare($sql);
+        $sql->bindValue(':id', $id);
+        $sql->execute();
+
+        if ($sql->rowCount()) {
+            $result = $sql->fetch();
+            return $result['id_cliente'];
+        }
+    }
+
+    public static function buscaIdFunc($id) {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT id_func FROM pedido_rlz WHERE id_pedido = :id";
+        $sql = $conn->prepare($sql);
+        $sql->bindValue(':id', $id);
+        $sql->execute();
+
+        if ($sql->rowCount()) {
+            $result = $sql->fetch();
+            return $result['id_func'];
+        }
+    }
+
+
     public function setId($id) {
         $this->id = $id;
     }

@@ -1,0 +1,36 @@
+{% for i in pedido %}
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Número do pedido</th>
+        <th scope="col">Vendedor</th>
+        <th scope="col">Cliente</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row"># {{i.numero_pdd}}</th>
+        <td>{{funcionario}}</td>
+        <td>{{cliente}}</td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Data de compra</th>
+        <th scope="col">Forma de pagamento</th>
+        <th scope="col">Valor total</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{i.data_fnz}}</td>
+        <td>{{i.forma_pag}}</td>
+        <td>R$ {{i.valor_tot}}</td>
+    </tr>
+    </tbody>
+</table>
+{% endfor %}
+<a href="https://localhost/Projeto_PHP_OO/index.php?pagina=pedido&metodo=listar" class="btn btn-primary">Voltar</a>

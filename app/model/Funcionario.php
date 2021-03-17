@@ -70,6 +70,41 @@ class Funcionario {
         }        
     }
 
+    public static function finalizaPedido() {
+
+        $conn = Connection::getConn();
+
+        $numero = $_SESSION['numero'];
+        $id_func = $_SESSION['id_func'];
+        $id_cli = $_SESSION['id_cli'];
+
+        $id = Pedidos::selecionaIdPdd($numero, $id_func, $id_cli);
+
+        $forma = Pedidos::formaPag($id);
+        $total = Produto::somaValor($id);
+        
+        $sql = "INSERT INTO pedido_rlz (numero_pdd, forma_pag, data_fnz, valor_tot, id_cliente, id_func) VALUES ('$numero', '$forma', NOW(), '$total', '$id_cli', '$id_func')";
+        $sql = $conn->prepare($sql);
+        $sql->execute();
+        
+    }
+
+    public static function retornaNome($id) {
+
+        $conn = Connection::getConn();
+
+        $sql = "SELECT nome FROM funcionario WHERE id_func = :id";
+        $sql = $conn->prepare($sql);
+        $sql->bindValue(':id', $id);
+        $sql->execute();
+
+        if ($sql->rowCount()) {
+            $result = $sql->fetch();
+            return $result['nome'];
+        }  
+        
+    }
+
     public function setId($id) {
         $this->id = $id;
     }
