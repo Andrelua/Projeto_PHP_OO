@@ -129,7 +129,7 @@ class Pedidos {
 
         $resultado = array();
 
-        while ($row = $sql->fetchObject('Cliente')) {
+        while ($row = $sql->fetchObject('Pedidos')) {
             $resultado[] = $row;
         }
         

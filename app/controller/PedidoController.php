@@ -137,7 +137,7 @@ class PedidoController {
                 $params = array();
                 $params['pedido'] = $singlePdd;
                 $params['cliente'] = $nomeCli;
-                $params['funcionario'] = $nomeCli;
+                $params['funcionario'] = $nomeFunc;
 
                 $conteudo = $template->render($params);
                 echo $conteudo;
