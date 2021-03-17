@@ -193,13 +193,45 @@ class Produto {
         }
     }
 
-    // Teste
-    public static function subQuantidade($qtd) {
-        
+    
+    public static function subQuantidade($qtd, $newQtd, $id) {
         $conn = Connection::getConn();
-
-        $sql = "UPDATE produto SET quantidade = '$vlr' WHERE  = '$id'";
+        
+        $vlr = $newQtd - $qtd;
+        
+        $sql = "UPDATE produto SET quantidade = '$vlr' WHERE id = '$id'";
         $sql = $conn->prepare($sql);
         $sql->execute();
+        
+    }
+
+    public static function selecionaQtdPdt($nome) {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM produto WHERE nome = :nome";
+        $sql = $conn->prepare($sql);
+        $sql->bindValue(':nome', $nome);
+        $sql->execute();
+
+        if ($sql->rowCount()) {
+            $result = $sql->fetch();
+            return $result['quantidade'];
+        }    
+
+    }
+
+    public static function selecionaIdPdt($nome) {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM produto WHERE nome = :nome";
+        $sql = $conn->prepare($sql);
+        $sql->bindValue(':nome', $nome);
+        $sql->execute();
+
+        if ($sql->rowCount()) {
+            $result = $sql->fetch();
+            return $result['id'];
+        }    
+
     }
 }

@@ -92,6 +92,12 @@ class PedidoController {
 
     public function addCarrinho() {
         
+        
+        $qtd = Produto::selecionaQtdPdt($_POST['nome']);
+        $id = Produto::selecionaIdPdt($_POST['nome']);
+        
+        Produto::subQuantidade($_POST['qtd'], $qtd, $id);
+        
         Produto::addCarrinho($_POST);
         
         header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=home&metodo=listarProdutos ');
