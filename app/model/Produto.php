@@ -173,6 +173,7 @@ class Produto {
         $nome = $dadosPost['nome'];
         $preco = $dadosPost['preco'];
         $qtd = $dadosPost['qtd'];
+        $ctg = $dadosPost['categoria'];
 
         $calc = $preco * $qtd;
 
@@ -184,7 +185,7 @@ class Produto {
 
         $conn = Connection::getConn();
 
-        $sql = "INSERT INTO carrinho (nome_produto, preco_produto, qtd_produto, id_pedido) VALUES ('$nome', '$calc', '$qtd', '$id')";
+        $sql = "INSERT INTO carrinho (nome_produto, categoria, preco_produto, qtd_produto, id_pedido) VALUES ('$nome', '$ctg', '$calc', '$qtd', '$id')";
         $sql = $conn->prepare($sql);
         $start = $sql->execute();
         
@@ -232,6 +233,36 @@ class Produto {
             $result = $sql->fetch();
             return $result['id'];
         }    
+
+    }
+
+    public static function addProdutosClientes() {
+        $conn = Connection::getConn();
+
+        $numero = $_SESSION['numero'];
+        $id_func = $_SESSION['id_func'];
+        $id_cli = $_SESSION['id_cli'];
+
+        $id = Pedidos::selecionaIdPdd($numero, $id_func, $id_cli);
+
+        $sql = "INSERT INTO produto_cliente (nome, categoria, quantidade, valor_und, id_pedido) SELECT nome_produto, categoria, preco_produto, qtd_produto, id_pedido FROM carrinho WHERE id_pedido = '$id'";
+        $sql = $conn->prepare($sql);
+        $sql->execute();  
+
+    }
+
+    public static function apagaCarrinho() {
+        $conn = Connection::getConn();
+
+        $numero = $_SESSION['numero'];
+        $id_func = $_SESSION['id_func'];
+        $id_cli = $_SESSION['id_cli'];
+
+        $id = Pedidos::selecionaIdPdd($numero, $id_func, $id_cli);
+
+        $sql = "DELETE FROM carrinho WHERE id_pedido = '$id'";
+        $sql = $conn->prepare($sql);
+        $sql->execute();
 
     }
 }

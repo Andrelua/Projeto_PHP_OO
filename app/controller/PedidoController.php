@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 class PedidoController {
     
     public function listar() {
@@ -102,6 +104,15 @@ class PedidoController {
         
         header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=home&metodo=listarProdutos ');
 
+    }
+
+    public function finalizarPdd() {
+
+        Produto::addProdutosClientes();
+
+        Produto::apagaCarrinho();
+
+        header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=cliente ');
     }
 
     // Teste pedido single
