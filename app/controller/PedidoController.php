@@ -100,6 +100,7 @@ class PedidoController {
         
         Produto::subQuantidade($_POST['qtd'], $qtd, $id);
         
+        
         Produto::addCarrinho($_POST);
         
         header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=home&metodo=listarProdutos ');
@@ -112,7 +113,7 @@ class PedidoController {
 
         Produto::apagaCarrinho();
 
-        Produto::apagaPedido();
+        //Produto::apagaPedido();
 
         header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=cliente ');
     }

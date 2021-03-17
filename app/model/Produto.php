@@ -59,10 +59,9 @@ class Produto {
 
     }
 
-    public static function updateCar($dadosPost) {
+    public static function updateCar($dadosPost, $preco) {
 
         $qtd = $dadosPost['quantidade'];
-        $preco = $dadosPost['preco'];
         $id = $dadosPost['id'];
 
         $vlr = $qtd * $preco;
@@ -236,6 +235,21 @@ class Produto {
 
     }
 
+    public static function selecionaPrecoPdt($nome) {
+        $conn = Connection::getConn();
+
+        $sql = "SELECT * FROM produto WHERE nome = :nome";
+        $sql = $conn->prepare($sql);
+        $sql->bindValue(':nome', $nome);
+        $sql->execute();
+
+        if ($sql->rowCount()) {
+            $result = $sql->fetch();
+            return $result['valor_und'];
+        }    
+
+    }
+
     public static function addProdutosClientes() {
         $conn = Connection::getConn();
 
@@ -272,11 +286,17 @@ class Produto {
         $id_func = $_SESSION['id_func'];
         $id_cli = $_SESSION['id_cli'];
 
-        $id = Pedidos::selecionaIdPddRl($numero, $id_func, $id_cli);
+        $id = Pedidos::selecionaIdPdd($numero, $id_func, $id_cli);
 
-        $sql = "DELETE FROM pedido_rlz WHERE id_pedido = '$id'";
+        $sql = "DELETE FROM pedido WHERE id_pedido = '$id'";
         $sql = $conn->prepare($sql);
-        $sql->execute();
+        $start = $sql->execute();
+
+        if ($start) {
+
+            $_SESSION['pedido'] = False;
+
+        }
         
     }
 

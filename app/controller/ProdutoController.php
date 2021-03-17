@@ -109,7 +109,9 @@ class ProdutoController {
 
     public function updateCar() {
 
-        Produto::updateCar($_POST);
+        $preco = Produto::selecionaPrecoPdt($_POST['nome']);
+
+        Produto::updateCar($_POST, $preco);
 
         header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=pedido&metodo=carrinhoView');
 
