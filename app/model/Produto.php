@@ -276,7 +276,13 @@ class Produto {
 
         $sql = "DELETE FROM carrinho WHERE id_pedido = '$id'";
         $sql = $conn->prepare($sql);
-        $sql->execute();
+        $start = $sql->execute();
+
+        if ($start) {
+
+            $_SESSION['pedido'] = False;
+
+        }
     }
 
     public static function apagaPedido() {
@@ -290,14 +296,8 @@ class Produto {
 
         $sql = "DELETE FROM pedido WHERE id_pedido = '$id'";
         $sql = $conn->prepare($sql);
-        $start = $sql->execute();
+        $sql->execute();
 
-        if ($start) {
-
-            $_SESSION['pedido'] = False;
-
-        }
-        
     }
 
     public static function somaValor($id) {
@@ -308,8 +308,8 @@ class Produto {
         $sql->execute();
 
         if ($sql->rowCount()) {
-            $result = $sql->fetch();
-            return $result['preco_produto'];
-        }  
+            $result = $sql->fetchColumn();
+            return $result;
+        }
     }
 }

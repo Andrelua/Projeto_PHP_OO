@@ -108,12 +108,12 @@ class PedidoController {
     }
 
     public function finalizarPdd() {
-
+        
         Funcionario::finalizaPedido();
 
         Produto::apagaCarrinho();
 
-        //Produto::apagaPedido();
+        // Produto::apagaPedido();
 
         header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=cliente ');
     }

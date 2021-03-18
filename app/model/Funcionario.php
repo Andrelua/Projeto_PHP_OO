@@ -81,9 +81,11 @@ class Funcionario {
         $id = Pedidos::selecionaIdPdd($numero, $id_func, $id_cli);
 
         $forma = Pedidos::formaPag($id);
+
         $total = Produto::somaValor($id);
+        $total = number_format($total, 2, '.', '');
         
-        $sql = "INSERT INTO pedido_rlz (numero_pdd, forma_pag, data_fnz, valor_tot, id_cliente, id_func) VALUES (1111, '$forma', NOW(), '$total', 4, 1)";
+        $sql = "INSERT INTO pedido_rlz (numero_pdd, forma_pag, data_fnz, valor_tot, id_cliente, id_func) VALUES ('$numero', '$forma', NOW(), '$total', $id_cli, $id_func)";
         $sql = $conn->prepare($sql);
         $sql->execute();
         

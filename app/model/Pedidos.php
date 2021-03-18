@@ -7,6 +7,7 @@ class Pedidos {
     public $numero;
     public $id_func;
     public $id_cli;
+    public $forma;
     public $data;
     public $valor = 0.0;
 
@@ -108,7 +109,7 @@ class Pedidos {
 
         $conn = Connection::getConn();
 
-        $sql = "SELECT forma_pag FROM pedido WHERE id_pedido = '$id'";
+        $sql = "SELECT forma_pag FROM pedido WHERE id = '$id'";
         $sql = $conn->prepare($sql);
         $sql->execute();
 
@@ -215,5 +216,13 @@ class Pedidos {
 
     public function getValor() {
         return $this->valor;
+    }
+
+    public function setForma($forma) {
+        $this->forma = $forma;
+    }
+
+    public function getForma() {
+        return $this->forma;
     }
 }
