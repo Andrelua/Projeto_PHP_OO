@@ -39,11 +39,17 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col">Pedidos realizados</th>
+      <th scope="col">Data realizada</th>
+      <th scope="col">Valor total</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <th scope="row">#####</th>
-    </tr>
-  </tbody>
+  {% for i in pedidos %}
+    <tbody>
+      <tr>
+        <th scope="row"># {{i.numero_pdd}}</th>
+        <th scope="row">{{i.data_fnz}}</th>
+        <th scope="row">R$ {{i.valor_tot}}</th>
+      </tr>
+    </tbody>
+  {% endfor %}
 </table>

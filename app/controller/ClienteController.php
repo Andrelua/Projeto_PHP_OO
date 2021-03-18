@@ -67,12 +67,15 @@ class ClienteController {
             try {
                 $singleCli = Cliente::buscarById($params);
 
+                $pedidoCli = Cliente::buscaPddId($params);
+
                 $loader = new \Twig\Loader\FilesystemLoader('app/view');
                 $twig = new \Twig\Environment($loader);
                 $template = $twig->load('singleCli.html');
 
                 $params = array();
                 $params['singles'] = $singleCli;
+                $params['pedidos'] = $pedidoCli;
 
                 $conteudo = $template->render($params);
                 echo $conteudo;

@@ -142,6 +142,25 @@ class Cliente {
         
     }
 
+    public static function buscaPddId($id) {
+
+        $conn = Connection::getConn();
+
+        $sql = "SELECT numero_pdd, data_fnz, valor_tot FROM pedido_rlz WHERE id_cliente = :id";
+        $sql = $conn->prepare($sql);
+        $sql->bindValue(':id', $id);
+        $sql->execute();
+
+        $resultado = array();
+
+        while ($row = $sql->fetchObject('Cliente')) {
+            $resultado[] = $row;
+        }
+        
+        return $resultado;
+        
+    }
+
     public function setId($id) {
         $this->id = $id;
     }
