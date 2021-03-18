@@ -113,7 +113,7 @@ class PedidoController {
 
         Produto::apagaCarrinho();
 
-        // Produto::apagaPedido();
+        Produto::apagaPedidos();
 
         header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=cliente ');
     }

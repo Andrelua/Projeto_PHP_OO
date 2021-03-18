@@ -285,16 +285,10 @@ class Produto {
         }
     }
 
-    public static function apagaPedido() {
+    public static function apagaPedidos() {
         $conn = Connection::getConn();
 
-        $numero = $_SESSION['numero'];
-        $id_func = $_SESSION['id_func'];
-        $id_cli = $_SESSION['id_cli'];
-
-        $id = Pedidos::selecionaIdPdd($numero, $id_func, $id_cli);
-
-        $sql = "DELETE FROM pedido WHERE id_pedido = '$id'";
+        $sql = "DELETE FROM pedido";
         $sql = $conn->prepare($sql);
         $sql->execute();
 

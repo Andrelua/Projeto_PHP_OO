@@ -74,6 +74,8 @@ class HomeController {
     public function logout() {
 
         if ($_SESSION['logado']) {
+
+            Produto::apagaPedidos();
             
             session_start();
             session_unset();
