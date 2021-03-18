@@ -77,12 +77,22 @@ class PedidoController {
 
             $carrinho = Produto::produtosCarrinho();
 
+            $numero = $_SESSION['numero'];
+            $id_func = $_SESSION['id_func'];
+            $id_cli = $_SESSION['id_cli'];
+
+            $id = Pedidos::selecionaIdPdd($numero, $id_func, $id_cli);
+
+            $total = Produto::somaValor($id);
+            $total = number_format($total, 2, '.', '');
+
             $loader = new \Twig\Loader\FilesystemLoader('app/view');
             $twig = new \Twig\Environment($loader);
             $template = $twig->load('carrinho.html');
 
             $params = array();
             $params['carrinho'] = $carrinho;
+            $params['valor'] = $total;
 
             $conteudo = $template->render($params);
             echo $conteudo;
@@ -118,6 +128,15 @@ class PedidoController {
         header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=cliente ');
     }
 
+    
+    public function cancelarPdd() {
+
+        Produto::apagaCarrinho();
+
+        Produto::apagaPedidos();
+
+        header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=home ');
+    }
     
     public function single($params) {
         if ($_SESSION['logado']) {
