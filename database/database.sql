@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 13/03/2021 às 23:30
+-- Tempo de geração: 19/03/2021 às 17:58
 -- Versão do servidor: 10.4.17-MariaDB
 -- Versão do PHP: 8.0.1
 
@@ -30,17 +30,11 @@ SET time_zone = "+00:00";
 CREATE TABLE `carrinho` (
   `id_carrinho` int(11) NOT NULL,
   `nome_produto` varchar(200) NOT NULL,
+  `categoria` varchar(200) NOT NULL,
   `preco_produto` float NOT NULL,
   `qtd_produto` int(11) NOT NULL,
   `id_pedido` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Despejando dados para a tabela `carrinho`
---
-
-INSERT INTO `carrinho` (`id_carrinho`, `nome_produto`, `preco_produto`, `qtd_produto`, `id_pedido`) VALUES
-(2, 'Banana', 20, 10, 16);
 
 -- --------------------------------------------------------
 
@@ -65,8 +59,8 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`id_cliente`, `nome`, `cpf`, `email`, `endereço`, `telefone`, `cidade`, `estado`, `cep`) VALUES
-(4, 'André Luan FIrmino de Santana', '123.748.044-29', 'andreluan123@gmail.com', 'Rua José Alfredo/Centro/Recife/123', '78976-4534', '', '', '76543-212'),
-(5, 'Luiza', '12343567800', 'andreluan176@gmail.com', 'Ruablablabla', '99107-2916', 'Recife', 'Piauí', '76543-212');
+(6, 'Luiza Maria', '123.123.123-12', 'luizamaria123@gmail.com', 'Rua dos bobos', '99912-9890', 'Recife', 'Pernambuco', '12654-098'),
+(7, 'Cremildo Luiz', '123.123.000-00', 'cremildo123@gmail.com', 'Rua dos bobos', '99999-0000', 'Recife', 'Pernambuco', '12313-000');
 
 -- --------------------------------------------------------
 
@@ -89,7 +83,9 @@ CREATE TABLE `funcionario` (
 
 INSERT INTO `funcionario` (`id_func`, `nome`, `senha`, `cpf`, `credencial`, `tipo`) VALUES
 (1, 'André Luan', '123456', '12374322900', '654-789', 'Gerente'),
-(2, 'André Luan FIrmino de Santana', '123456', '12343567800', '789-654', 'Operador de caixa');
+(2, 'André Luan FIrmino de Santana', '123456', '12343567800', '789-654', 'Operador de caixa'),
+(5, 'Andrea Manu', '123456', '123.456.789-00', '987-567', 'Gerente'),
+(6, 'João', '123456', '123.123.123-00', '123-123', 'Operador de caixa');
 
 -- --------------------------------------------------------
 
@@ -104,24 +100,6 @@ CREATE TABLE `pedido` (
   `id_func` int(11) NOT NULL,
   `id_cliente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Despejando dados para a tabela `pedido`
---
-
-INSERT INTO `pedido` (`id`, `numero_pdd`, `forma_pag`, `id_func`, `id_cliente`) VALUES
-(5, 4435, 'Débito', 1, 4),
-(6, 4435, 'Dinheiro', 1, 4),
-(7, 1234, 'Débito', 1, 4),
-(8, 78906, 'Débito', 1, 4),
-(9, 7890611, 'Débito', 1, 5),
-(10, 789060, 'Débito', 1, 4),
-(11, 4435, 'Débito', 1, 4),
-(12, 1234, 'Débito', 1, 4),
-(13, 176, 'Débito', 1, 4),
-(14, 1251745374, 'Crédito', 1, 4),
-(15, 8909, 'Débito', 1, 4),
-(16, 6098, 'Débito', 1, 4);
 
 -- --------------------------------------------------------
 
@@ -138,6 +116,17 @@ CREATE TABLE `pedido_rlz` (
   `id_cliente` int(11) NOT NULL,
   `id_func` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Despejando dados para a tabela `pedido_rlz`
+--
+
+INSERT INTO `pedido_rlz` (`id_pedido`, `numero_pdd`, `forma_pag`, `data_fnz`, `valor_tot`, `id_cliente`, `id_func`) VALUES
+(7, 4435, 'Dinheiro', '2021-03-18 14:41:20.000000', 2.4, 6, 1),
+(8, 557788, 'Dinheiro', '2021-03-18 14:42:47.000000', 2.4, 6, 1),
+(9, 7896, 'Dinheiro', '2021-03-18 14:44:33.000000', 2.4, 6, 1),
+(10, 869705, 'Dinheiro', '2021-03-18 17:56:32.000000', 8.4, 6, 1),
+(11, 78900, 'Dinheiro', '2021-03-18 21:08:00.000000', 7.2, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -158,24 +147,9 @@ CREATE TABLE `produto` (
 --
 
 INSERT INTO `produto` (`id`, `nome`, `categoria`, `quantidade`, `valor_und`) VALUES
-(6, 'Banana', 'Frutas e legumes', 20, 1.2),
-(7, 'Abacate', 'Frutas e legumes', 10, 2),
-(8, 'Schin cola', 'Bebidas', 20, 4);
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `produto_cliente`
---
-
-CREATE TABLE `produto_cliente` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(200) NOT NULL,
-  `categoria` varchar(200) NOT NULL,
-  `quantidade` int(11) NOT NULL,
-  `valor_und` float NOT NULL,
-  `id_pedido` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+(9, 'Banana', 'Frutas e legumes', 27, 1.2),
+(10, 'Shin cola', 'Bebidas', 20, 4),
+(11, 'Banana', 'Frutas e legumes', 20, 1.5);
 
 --
 -- Índices para tabelas despejadas
@@ -214,18 +188,12 @@ ALTER TABLE `pedido`
 ALTER TABLE `pedido_rlz`
   ADD PRIMARY KEY (`id_pedido`),
   ADD KEY `fk_pedidofz_cliente` (`id_cliente`),
-  ADD KEY `fk_pedidofz_func` (`id_func`);
+  ADD KEY `fk_pedidofz_func` (`id_func`) USING BTREE;
 
 --
 -- Índices de tabela `produto`
 --
 ALTER TABLE `produto`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices de tabela `produto_cliente`
---
-ALTER TABLE `produto_cliente`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -236,31 +204,37 @@ ALTER TABLE `produto_cliente`
 -- AUTO_INCREMENT de tabela `carrinho`
 --
 ALTER TABLE `carrinho`
-  MODIFY `id_carrinho` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_carrinho` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de tabela `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `funcionario`
 --
 ALTER TABLE `funcionario`
-  MODIFY `id_func` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_func` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
+-- AUTO_INCREMENT de tabela `pedido_rlz`
+--
+ALTER TABLE `pedido_rlz`
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de tabela `produto`
 --
 ALTER TABLE `produto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restrições para tabelas despejadas
