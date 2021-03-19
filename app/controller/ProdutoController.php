@@ -17,11 +17,11 @@ class ProdutoController {
                 echo $template->render();
 
             } else {
-                header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroValidacao');
+                header ('Location: index.php?pagina=erro&metodo=erroValidacao');
             }
 
         } else {
-            header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin');
+            header ('Location: index.php?pagina=erro&metodo=erroLogin');
         }
         
     }
@@ -48,7 +48,7 @@ class ProdutoController {
             }
 
         } else {
-            header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin ');
+            header ('Location: index.php?pagina=erro&metodo=erroLogin ');
         }
 
     }
@@ -57,7 +57,7 @@ class ProdutoController {
 
         Produto::register($_POST);
 
-        header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=produto&metodo=listar');
+        header('Location: index.php?pagina=produto&metodo=listar');
 
     }
 
@@ -65,7 +65,7 @@ class ProdutoController {
 
         Produto::update($_POST);
 
-        header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=produto&metodo=listar');
+        header('Location: index.php?pagina=produto&metodo=listar');
 
     }
 
