@@ -1,8 +1,8 @@
 <div class="container2" style="padding: 10px; text-align: center;"> 
-    <a href="https://localhost/Projeto_PHP_OO/index.php?pagina=pedido&metodo=carrinhoView" class="btn btn-secondary">Produtos já adicionados ao carrinho.</a>
+    <a href="index.php?pagina=pedido&metodo=carrinhoView" class="btn btn-secondary">Produtos já adicionados ao carrinho.</a>
 </div>
 {% for produto in produtos %}
-    <form action="https://localhost/Projeto_PHP_OO/index.php?pagina=pedido&metodo=addCarrinho" method="POST">
+    <form action="index.php?pagina=pedido&metodo=addCarrinho" method="POST">
         <div class="card d-inline p-2" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-title">{{produto.nome}} - R$ {{produto.valor_und}} UND/KG</h5>
@@ -16,6 +16,6 @@
     </form>
 {% endfor %}
 <div class="container2" style="padding: 10px; text-align: center;">
-    <a href="https://localhost/Projeto_PHP_OO/index.php?pagina=pedido&metodo=finalizarPdd" style="margin-left: 210px;" class="btn btn-secondary">Finalizar</a>
-    <a href="https://localhost/Projeto_PHP_OO/index.php?pagina=pedido&metodo=cancelarPdd" style="float: right; margin-right: 80px;" class="btn btn-danger">Cancelar pedido</a>
+    <a href="index.php?pagina=pedido&metodo=finalizarPdd" style="margin-left: 210px;" class="btn btn-secondary">Finalizar</a>
+    <a href="index.php?pagina=pedido&metodo=cancelarPdd" style="float: right; margin-right: 80px;" class="btn btn-danger">Cancelar pedido</a>
 </div>

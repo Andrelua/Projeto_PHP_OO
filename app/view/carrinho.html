@@ -18,8 +18,8 @@
                           <th scope="row">{{car.categoria}}</th>
                           <th scope="row">R$ {{car.preco_produto}}</th>
                           <th scope="row">{{car.qtd_produto}}</th>
-                          <th scope="row"><a href="https://localhost/Projeto_PHP_OO/index.php?pagina=produto&metodo=singleCar&id={{car.id_carrinho}}" class="btn btn-secondary">Editar</a></th>
-                          <th scope="row"><a href="https://localhost/Projeto_PHP_OO/index.php?pagina=produto&metodo=deleteCar&id={{car.id_carrinho}}" class="btn btn-danger">Deletar</a></th>
+                          <th scope="row"><a href="index.php?pagina=produto&metodo=singleCar&id={{car.id_carrinho}}" class="btn btn-secondary">Editar</a></th>
+                          <th scope="row"><a href="index.php?pagina=produto&metodo=deleteCar&id={{car.id_carrinho}}" class="btn btn-danger">Deletar</a></th>
                         </tr>
                       </tbody>
                     {% endfor %}

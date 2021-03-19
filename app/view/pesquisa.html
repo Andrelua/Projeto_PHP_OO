@@ -11,7 +11,7 @@
                   {% for pedido in pedidos %}
                     <tbody>
                       <tr>
-                        <th scope="row"><a href="https://localhost/Projeto_PHP_OO/index.php?pagina=pedido&metodo=single&id={{pedido.id_pedido}}" style="text-decoration:none; color: black;">{{pedido.numero_pdd}}</a></th>
+                        <th scope="row"><a href="index.php?pagina=pedido&metodo=single&id={{pedido.id_pedido}}" style="text-decoration:none; color: black;">{{pedido.numero_pdd}}</a></th>
                       </tr>
                     </tbody>
                   {% endfor %}

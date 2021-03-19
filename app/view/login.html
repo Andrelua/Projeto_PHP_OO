@@ -1,6 +1,6 @@
 <div class="container2"> 
     <h2><img src="../../logo.png" alt=""> Acesso ao dashboard</h2>
-    <form method="POST" action="https://localhost/Projeto_PHP_OO/index.php?pagina=login&metodo=checkLogin">
+    <form method="POST" action="index.php?pagina=login&metodo=checkLogin">
         <div class="form-group">
             <label for="credencial">Credencial - xxx-xxx</label>
             <input required name="credencial" type="text" class="form-control" id="credencial" pattern="^\d{3}-\d{3}$" aria-describedby="emailHelp" placeholder="Sua credencial aqui...">
@@ -9,7 +9,7 @@
             <label for="exampleInputPassword1">Senha</label>
             <input required name="senha" type="password" class="form-control" minlength="6" maxlength="16" id="exampleInputPassword1" placeholder="Senha">
         </div>
-        Caso o funcionário não esteja cadastrado, <a href="https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=verificacao" style="color: black;">Cadastre-o</a>.
+        Caso o funcionário não esteja cadastrado, <a href="index.php?pagina=erro&metodo=verificacao" style="color: black;">Cadastre-o</a>.
         <br>
         <button type="submit" class="btn btn-success">Enviar</button>
     </form>

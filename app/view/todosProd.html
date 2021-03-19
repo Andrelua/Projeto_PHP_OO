@@ -20,11 +20,11 @@
                           <th scope="row">{{produto.categoria}}</th>
                           <th scope="row">{{produto.quantidade}}</th>
                           <th scope="row">R$ {{produto.valor_und}}</th>
-                          <th scope="row"><a href="https://localhost/Projeto_PHP_OO/index.php?pagina=produto&metodo=single&id={{produto.id}}" class="btn btn-secondary">Editar</a></th>
-                          <th scope="row"><a href="https://localhost/Projeto_PHP_OO/index.php?pagina=produto&metodo=delete&id={{produto.id}}" class="btn btn-danger">Deletar</a></th>
+                          <th scope="row"><a href="index.php?pagina=produto&metodo=single&id={{produto.id}}" class="btn btn-secondary">Editar</a></th>
+                          <th scope="row"><a href="index.php?pagina=produto&metodo=delete&id={{produto.id}}" class="btn btn-danger">Deletar</a></th>
                         </tr>
                       </tbody>
-                    {% endfor %}
+                    {% endfor %
                   </table>
             </header>
         </article>
