@@ -27,7 +27,7 @@ class ClienteController {
             }
             
         } else {
-            header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin');
+            header('Location: index.php?pagina=erro&metodo=erroLogin');
         }
 
         
@@ -49,7 +49,7 @@ class ClienteController {
             }
 
         } else {
-            header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin');
+            header('Location: index.php?pagina=erro&metodo=erroLogin');
         }
     }
 
@@ -57,7 +57,7 @@ class ClienteController {
 
         Cliente::cadastraCliente($_POST);
 
-        header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=cliente');
+        header('Location: index.php?pagina=cliente');
         
     }
     
@@ -85,7 +85,7 @@ class ClienteController {
             }
             
         } else {
-            header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin');
+            header('Location: index.php?pagina=erro&metodo=erroLogin');
         }
     }
 
@@ -95,10 +95,10 @@ class ClienteController {
 
             Cliente::atualizarDados($_POST);
 
-            header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=cliente');
+            header('Location: index.php?pagina=cliente');
 
         } else {
-            header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin');
+            header('Location: index.php?pagina=erro&metodo=erroLogin');
         }
     }
 

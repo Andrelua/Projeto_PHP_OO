@@ -32,10 +32,10 @@ class LoginController {
         try {
             
             Funcionario::cadastraFunc($_POST);
-            header('Location: https://localhost/Projeto_PHP_OO/index.php');
+            header('Location: index.php');
             
         } catch (Exeception $e) {
-            header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=login&metodo=register');
+            header('Location: index.php?pagina=login&metodo=register');
         }
 
     }
@@ -44,10 +44,10 @@ class LoginController {
         
         if (Funcionario::checkLogin($_POST)) {
 
-            header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=home');
+            header('Location: index.php?pagina=home');
 
         } else {
-            header('Location: https://localhost/Projeto_PHP_OO/index.php');
+            header('Location: index.php');
         }   
         
     }
@@ -56,10 +56,10 @@ class LoginController {
         
         if (Funcionario::checkGerente($_POST)) {
 
-            header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=login&metodo=register');
+            header('Location: index.php?pagina=login&metodo=register');
 
         } else {
-            header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroGerente');
+            header('Location: index.php?pagina=erro&metodo=erroGerente');
         }   
         
     }

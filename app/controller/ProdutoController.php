@@ -113,7 +113,7 @@ class ProdutoController {
 
         Produto::updateCar($_POST, $preco);
 
-        header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=pedido&metodo=carrinhoView');
+        header('Location: index.php?pagina=pedido&metodo=carrinhoView');
 
     }
 
@@ -121,13 +121,13 @@ class ProdutoController {
         
         Produto::deleteById($params);
         
-        header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=produto&metodo=listar');
+        header('Location: index.php?pagina=produto&metodo=listar');
     }
     
     public function deleteCar($params) {
         
         Produto::deletePdtCar($params);
         
-        header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=pedido&metodo=carrinhoView');
+        header('Location: index.php?pagina=pedido&metodo=carrinhoView');
     }
 }

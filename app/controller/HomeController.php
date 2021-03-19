@@ -15,7 +15,7 @@ class HomeController {
             echo $template->render();
             
         } else {
-            header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin');
+            header ('Location: index.php?pagina=erro&metodo=erroLogin');
         }
     }
 
@@ -38,11 +38,11 @@ class HomeController {
                 echo $conteudo;
 
             } else {
-                header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=home&metodo=listarProdutos');
+                header('Location: index.php?pagina=home&metodo=listarProdutos');
             }
 
         } else {
-            header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin ');
+            header ('Location: index.php?pagina=erro&metodo=erroLogin ');
         }
     }
 
@@ -67,7 +67,7 @@ class HomeController {
             }
 
         } else {
-            header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin ');
+            header ('Location: index.php?pagina=erro&metodo=erroLogin ');
         }
     }
 
@@ -81,10 +81,10 @@ class HomeController {
             session_unset();
             session_destroy();
             
-            header('Location: https://localhost/Projeto_PHP_OO/index.php');
+            header('Location: index.php');
 
         } else {
-            header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin ');
+            header ('Location: index.php?pagina=erro&metodo=erroLogin ');
         }
     }
 }

@@ -21,7 +21,6 @@ class Core{
             $method = 'index';
         }
 
-
         if (!class_exists($controller)){
             $controller = 'ErroController';
         }

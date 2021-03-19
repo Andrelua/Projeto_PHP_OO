@@ -25,7 +25,7 @@ class PedidoController {
             }
             
         } else {
-            header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin ');
+            header ('Location: index.php?pagina=erro&metodo=erroLogin ');
         }
         
     }
@@ -52,7 +52,7 @@ class PedidoController {
             }
 
         } else {
-            header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin ');
+            header ('Location: index.php?pagina=erro&metodo=erroLogin ');
         }
     }
 
@@ -64,10 +64,10 @@ class PedidoController {
 
             $criacao = Pedidos::createPdd($id_cliente, $_POST);
 
-            header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=home&metodo=listarProdutos');
+            header('Location: index.php?pagina=home&metodo=listarProdutos');
 
         } else {
-            header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin ');
+            header ('Location: index.php?pagina=erro&metodo=erroLogin ');
         }
     }
 
@@ -113,7 +113,7 @@ class PedidoController {
         
         Produto::addCarrinho($_POST);
         
-        header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=home&metodo=listarProdutos ');
+        header ('Location: index.php?pagina=home&metodo=listarProdutos ');
 
     }
 
@@ -125,7 +125,7 @@ class PedidoController {
 
         Produto::apagaPedidos();
 
-        header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=cliente ');
+        header ('Location: index.php?pagina=cliente ');
     }
 
     
@@ -135,7 +135,7 @@ class PedidoController {
 
         Produto::apagaPedidos();
 
-        header ('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=home ');
+        header ('Location: index.php?pagina=home ');
     }
     
     public function single($params) {
@@ -166,7 +166,7 @@ class PedidoController {
             }
             
         } else {
-            header('Location: https://localhost/Projeto_PHP_OO/index.php?pagina=erro&metodo=erroLogin');
+            header('Location: index.php?pagina=erro&metodo=erroLogin');
         }
     }
 }
