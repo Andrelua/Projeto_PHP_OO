@@ -26,7 +26,7 @@ ob_start();
     $saida = ob_get_contents();
 ob_clean();
 
-$template = file_get_contents("/opt/lampp/htdocs/Projeto_PHP_OO/app/template/dashboard.php");
+$template = file_get_contents("app/template/dashboard.php");
 
 $templatePronto = str_replace('{{area dinamica}}', $saida, $template);
 echo $templatePronto;
